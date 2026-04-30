@@ -23,6 +23,17 @@
   ALTER SEQUENCE {{schema}}.t_ili2db_seq RESTART WITH 1;
 {%- endmacro %}
 
+
+{% macro setup_roles_for_schema(schema_name) -%}
+  {{ log("Creating Read/Write roles for schema " ~ schema_name, info=True) }}
+
+  {% set sql_query %}
+    CREATE ROLE {{schema_name}}_read;
+    CREATE ROLE {{schema_name}}_write;
+  {% endset %}
+  {% do run_query(sql_query) %}
+{%- endmacro %}
+
 --- Baskets and Datasets ------------------------------------------------------
 
 {% macro setup_baskets(schema_name) %}
@@ -122,22 +133,23 @@
 
 --- Parsing on dbt Triggers ---------------------------------------------------
 {% macro run_start_parsing() %}
+  {% if execute %}
 
     {{ log(
-        "Running run_start_parsing() \n"
+        "Running ili_utils.run_start_parsing() macro \n"
         ~ "reset_target: " ~ var('reset_target', false) ~ "\n"
         ~ "enable_transfer: " ~ var('enable_transfer', false),
         info=True
     )}}
 
-  -- reset dbt schema's t_ili2db_seq
-  {{ reset_ili_sequence(target.schema) }}
+    -- reset dbt schema's t_ili2db_seq
+    {{ ili_utils.reset_ili_sequence(target.schema) }}
 
-  {% if var('enable_transfer', false) %}
-
-    {% if var('reset_target', false) %}
-      {{ reset_target_schema(var('target_ili_schema')) }}
+    {% if var('enable_transfer', false) %}
+      {% if var('reset_target', false) %}
+        {{ ili_utils.reset_target_schema(var('target_ili_schema')) }}
+      {% endif %}
     {% endif %}
+
   {% endif %}
 {%- endmacro %}
-
