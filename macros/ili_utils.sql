@@ -4,7 +4,7 @@
 -- intended use: first time dbt schema setup
 --  call through run-operations e.g.:
 --  dbt run-operation create_ili_sequence --args '{schema: dbt_quellkataster}'
-{% macro create_ili_sequence(schema) -%}
+{% macro create_ili_sequence(schema_name) -%}
   -- create sequence
   {% set query %}
     CREATE SEQUENCE IF NOT EXISTS {{schema}}.t_ili2db_seq
@@ -19,8 +19,8 @@
 {%- endmacro %}
 
 -- Reset 't_ili2db_seq' in target schema
-{% macro reset_ili_sequence(schema) -%}
-  ALTER SEQUENCE {{schema}}.t_ili2db_seq RESTART WITH 1;
+{% macro reset_ili_sequence(schema_name) -%}
+  ALTER SEQUENCE {{schema_name}}.t_ili2db_seq RESTART WITH 1;
 {%- endmacro %}
 
 
