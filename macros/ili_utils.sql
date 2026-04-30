@@ -7,7 +7,7 @@
 {% macro create_ili_sequence(schema_name) -%}
   -- create sequence
   {% set query %}
-    CREATE SEQUENCE IF NOT EXISTS {{schema}}.t_ili2db_seq
+    CREATE SEQUENCE IF NOT EXISTS {{schema_name}}.t_ili2db_seq
     INCREMENT 1
     START 1
     MINVALUE 1
@@ -30,9 +30,32 @@
   {% set sql_query %}
     CREATE ROLE {{schema_name}}_read;
     CREATE ROLE {{schema_name}}_write;
+
+    GRANT {{schema_name}}_write to {{target.user}};
+    GRANT {{schema_name}}_write to {{target.user}};
   {% endset %}
   {% do run_query(sql_query) %}
 {%- endmacro %}
+
+{% macro grant_select_on_all_tables(schema_name) -%}
+  {{ log(
+    "Granting USAGE on schema " ~ schema_name 
+    ~ " to " ~ target.user, 
+    info=True
+  )}}
+  {{ log(
+    "Granting ALL on all tables in schema " ~ schema_name 
+    ~ " to " ~ target.user, 
+    info=True
+  )}}
+
+  {% set sql_query %}
+    GRANT USAGE ON SCHEMA {{schema_name}} TO {{target.user}};
+    GRANT ALL ON ALL TABLES IN SCHEMA {{schema_name}} TO {{target.user}};
+  {% endset %}
+  {% do run_query(sql_query) %}
+{%- endmacro %}
+
 
 --- Baskets and Datasets ------------------------------------------------------
 
@@ -93,7 +116,7 @@
 {%- endmacro %}
 
 {% macro reset_target_schema(schema_name) %}
-  {{ reset_ili_sequence(schema_name) }}
+  {{ ili_utils.reset_ili_sequence(schema_name) }}
 
   -- Clear truncate tables
   {% set sql_truncate %}
@@ -104,10 +127,10 @@
   {% do run_query(sql_truncate) %}
 
   -- Populate dataset table
-  {{ setup_datasets(schema_name) }}
+  {{ ili_utils.setup_datasets(schema_name) }}
 
   -- Populate basket table
-  {{ setup_baskets(schema_name) }}
+  {{ ili_utils.setup_baskets(schema_name) }}
 {%- endmacro %}
 
 
