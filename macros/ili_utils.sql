@@ -31,7 +31,7 @@
     CREATE ROLE {{schema_name}}_read;
     CREATE ROLE {{schema_name}}_write;
 
-    GRANT {{schema_name}}_write to {{target.user}};
+    GRANT {{schema_name}}_read to {{target.user}};
     GRANT {{schema_name}}_write to {{target.user}};
   {% endset %}
   {% do run_query(sql_query) %}
