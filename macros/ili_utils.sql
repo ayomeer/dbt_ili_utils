@@ -24,17 +24,26 @@
 {%- endmacro %}
 
 
+-- Set up roles, such that there are no access issues for the dbt user 
+-- (target.user). Run this before restoring backups, so the roles can be granted.
 {% macro setup_roles_for_schema(schema_name) -%}
   {{ log("Creating Read/Write roles for schema " ~ schema_name, info=True) }}
+  {{ log("Creating role " ~ schema_name ~ "_read", info=True) }}
+  {{ log("Creating role " ~ schema_name ~ "_write", info=True) }}
 
   {% set sql_query %}
     CREATE ROLE {{schema_name}}_read;
     CREATE ROLE {{schema_name}}_write;
+  {% endset %}
+  {% do run_query(sql_query) %}
 
+  {{ log("Assigning created roles to " ~ target.user, info=True) }}
+  {% set sql_query %}
     GRANT {{schema_name}}_read to {{target.user}};
     GRANT {{schema_name}}_write to {{target.user}};
   {% endset %}
   {% do run_query(sql_query) %}
+
 {%- endmacro %}
 
 {% macro grant_select_on_all_tables(schema_name) -%}
