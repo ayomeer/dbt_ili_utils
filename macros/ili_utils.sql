@@ -67,10 +67,9 @@
 
 
 --- Baskets and Datasets ------------------------------------------------------
-
+-- Populate basket table based on project configuration:
+-- Add a row (i.e.) a basket for each basket defined in dbt_project.yml
 {% macro setup_baskets(schema_name) %}
-  -- Populate basket table based on project configuration:
-  -- Add a row (i.e.) a basket for each basket defined in dbt_project.yml
   {% for key, value_dict in var('baskets').items() %}
     {{ log(
         "Writing " ~ key ~ " into " ~ schema_name ~ ".t_ili2db_basket",

@@ -4,7 +4,7 @@ package_dev:
     dev:
       dbname: test-db
       host: postgis-container
-      pass: ppp
+      pass: postgres
       port: 5432
       schema: dbt_default
       threads: 1

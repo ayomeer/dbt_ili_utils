@@ -139,3 +139,993 @@ Runtime Error
 [0m07:16:35.081834 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x751cef3bae90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x751cef3b9310>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x751cf3f08690>]}
 [0m07:16:35.082154 [debug] [MainThread]: Flushing usage events
 [0m07:16:35.661385 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m09:34:33.394611 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72b65c14f710>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72b65829b250>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72b6581c4290>]}
+
+
+============================== 09:34:33.399906 | d01779ad-19f6-4c2c-ba72-3e3001cf728d ==============================
+[0m09:34:33.399906 [info ] [MainThread]: Running with dbt=1.11.7
+[0m09:34:33.400352 [debug] [MainThread]: running dbt with arguments {'invocation_command': 'dbt deps', 'write_json': 'True', 'use_experimental_parser': 'False', 'quiet': 'False', 'version_check': 'True', 'empty': 'None', 'send_anonymous_usage_stats': 'True', 'log_cache_events': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_format': 'default', 'introspect': 'True', 'partial_parse': 'True', 'use_colors': 'True', 'profiles_dir': '/project/src/ili_utils', 'log_path': '/project/src/ili_utils/logs', 'static_parser': 'True', 'debug': 'False', 'target_path': 'None', 'printer_width': '80', 'fail_fast': 'False', 'cache_selected_only': 'False', 'warn_error': 'None', 'no_print': 'None', 'indirect_selection': 'eager'}
+[0m09:34:33.513422 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'd01779ad-19f6-4c2c-ba72-3e3001cf728d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72b657e54e90>]}
+[0m09:34:33.531720 [debug] [MainThread]: Set downloads directory='/tmp/dbt-downloads-os49y_d7'
+[0m09:34:33.532351 [debug] [MainThread]: Making package index registry request: GET https://hub.getdbt.com/api/v1/index.json
+[0m09:34:34.044401 [debug] [MainThread]: Response from registry index: GET https://hub.getdbt.com/api/v1/index.json 200
+[0m09:34:34.046982 [debug] [MainThread]: Making package registry request: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json
+[0m09:34:34.241485 [debug] [MainThread]: Response from registry: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json 200
+[0m09:34:34.248506 [info ] [MainThread]: Installing dbt-labs/dbt_utils
+[0m09:34:34.621156 [info ] [MainThread]: Installed from version 1.3.3
+[0m09:34:34.621582 [info ] [MainThread]: Up to date!
+[0m09:34:34.621919 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'package', 'label': 'd01779ad-19f6-4c2c-ba72-3e3001cf728d', 'property_': 'install', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72b657df6990>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72b657d87e50>]}
+[0m09:34:34.623060 [debug] [MainThread]: Resource report: {"command_name": "deps", "command_success": true, "command_wall_clock_time": 1.271266, "process_in_blocks": "1408", "process_kernel_time": 0.319664, "process_mem_max_rss": "113140", "process_out_blocks": "2296", "process_user_time": 1.815093}
+[0m09:34:34.623465 [debug] [MainThread]: Command `dbt deps` succeeded at 09:34:34.623392 after 1.27 seconds
+[0m09:34:34.623740 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72b65cb79c50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72b65cb78c90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72b657d617d0>]}
+[0m09:34:34.624029 [debug] [MainThread]: Flushing usage events
+[0m09:34:35.670485 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m09:34:40.879420 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7391406d44d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7391409e8410>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7391406d4f10>]}
+
+
+============================== 09:34:40.884872 | 88eb3fc8-2607-432d-8213-bb54a0253665 ==============================
+[0m09:34:40.884872 [info ] [MainThread]: Running with dbt=1.11.7
+[0m09:34:40.885403 [debug] [MainThread]: running dbt with arguments {'warn_error': 'None', 'static_parser': 'True', 'invocation_command': 'dbt compile', 'empty': 'False', 'target_path': 'None', 'partial_parse': 'True', 'version_check': 'True', 'debug': 'False', 'send_anonymous_usage_stats': 'True', 'fail_fast': 'False', 'printer_width': '80', 'indirect_selection': 'eager', 'cache_selected_only': 'False', 'log_format': 'default', 'profiles_dir': '/project/src/ili_utils', 'log_cache_events': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'use_colors': 'True', 'write_json': 'True', 'quiet': 'False', 'introspect': 'True', 'no_print': 'None', 'use_experimental_parser': 'False', 'log_path': '/project/src/ili_utils/logs'}
+[0m09:34:41.023393 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '88eb3fc8-2607-432d-8213-bb54a0253665', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7391407af990>]}
+[0m09:34:41.072620 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '88eb3fc8-2607-432d-8213-bb54a0253665', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7391436c8490>]}
+[0m09:34:41.073389 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m09:34:41.193503 [debug] [MainThread]: checksum: b80718358155fc17c3559352095564dd56ada1cc1a1c0ef2e62c857e71583775, vars: {}, profile: , target: , version: 1.11.7
+[0m09:34:41.194161 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m09:34:41.194496 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '88eb3fc8-2607-432d-8213-bb54a0253665', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73914033f810>]}
+[0m09:34:42.157391 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '88eb3fc8-2607-432d-8213-bb54a0253665', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x739140172a50>]}
+[0m09:34:42.203254 [debug] [MainThread]: Wrote artifact WritableManifest to /project/src/ili_utils/target/manifest.json
+[0m09:34:42.204997 [debug] [MainThread]: Wrote artifact SemanticManifest to /project/src/ili_utils/target/semantic_manifest.json
+[0m09:34:42.219594 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '88eb3fc8-2607-432d-8213-bb54a0253665', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73913fdc5150>]}
+[0m09:34:42.220066 [info ] [MainThread]: Found 1 analysis, 591 macros
+[0m09:34:42.220385 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '88eb3fc8-2607-432d-8213-bb54a0253665', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7391409effd0>]}
+[0m09:34:42.221789 [info ] [MainThread]: 
+[0m09:34:42.222146 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m09:34:42.222406 [info ] [MainThread]: 
+[0m09:34:42.222812 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m09:34:42.264200 [debug] [MainThread]: Using postgres connection "master"
+[0m09:34:42.264731 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "package_dev", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m09:34:42.265126 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m09:34:42.276228 [debug] [MainThread]: Postgres adapter: Got a retryable error when attempting to open a postgres connection.
+1 attempts remaining. Retrying in 0 seconds.
+Error:
+connection to server at "postgis-container" (172.18.0.4), port 5432 failed: FATAL:  password authentication failed for user "postgres"
+
+[0m09:34:42.284900 [debug] [MainThread]: Postgres adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "package_dev", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m09:34:42.285452 [debug] [MainThread]: Postgres adapter: Rolling back transaction.
+[0m09:34:42.285838 [debug] [MainThread]: Postgres adapter: Error running SQL: macro postgres__get_relations
+[0m09:34:42.286130 [debug] [MainThread]: Postgres adapter: Rolling back transaction.
+[0m09:34:42.286449 [debug] [MainThread]: On master: No close available on handle
+[0m09:34:42.286842 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m09:34:42.287288 [error] [MainThread]: Encountered an error:
+Database Error
+  connection to server at "postgis-container" (172.18.0.4), port 5432 failed: FATAL:  password authentication failed for user "postgres"
+  
+[0m09:34:42.288189 [debug] [MainThread]: Resource report: {"command_name": "compile", "command_success": false, "command_wall_clock_time": 1.4527751, "process_in_blocks": "0", "process_kernel_time": 0.380175, "process_mem_max_rss": "125392", "process_out_blocks": "2376", "process_user_time": 2.91069}
+[0m09:34:42.288689 [debug] [MainThread]: Command `dbt compile` failed at 09:34:42.288582 after 1.45 seconds
+[0m09:34:42.289029 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73913fb24390>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73914003a1d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7391407a0b50>]}
+[0m09:34:42.289375 [debug] [MainThread]: Flushing usage events
+[0m09:34:43.144303 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m09:35:03.118756 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x745464c0c310>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7454648ee350>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7454648fa250>]}
+
+
+============================== 09:35:03.124956 | 52d5580e-b6a3-4139-8b17-f908d773fa46 ==============================
+[0m09:35:03.124956 [info ] [MainThread]: Running with dbt=1.11.7
+[0m09:35:03.125446 [debug] [MainThread]: running dbt with arguments {'target_path': 'None', 'log_format': 'default', 'printer_width': '80', 'introspect': 'True', 'no_print': 'None', 'write_json': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'use_colors': 'True', 'quiet': 'False', 'send_anonymous_usage_stats': 'True', 'debug': 'False', 'profiles_dir': '/project/src/ili_utils', 'indirect_selection': 'eager', 'fail_fast': 'False', 'static_parser': 'True', 'warn_error': 'None', 'use_experimental_parser': 'False', 'partial_parse': 'True', 'log_cache_events': 'False', 'invocation_command': 'dbt compile', 'log_path': '/project/src/ili_utils/logs', 'empty': 'False', 'version_check': 'True', 'cache_selected_only': 'False'}
+[0m09:35:03.274224 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '52d5580e-b6a3-4139-8b17-f908d773fa46', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74546489b910>]}
+[0m09:35:03.326114 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '52d5580e-b6a3-4139-8b17-f908d773fa46', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7454678cc2d0>]}
+[0m09:35:03.326876 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m09:35:03.452781 [debug] [MainThread]: checksum: b80718358155fc17c3559352095564dd56ada1cc1a1c0ef2e62c857e71583775, vars: {}, profile: , target: , version: 1.11.7
+[0m09:35:03.520658 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m09:35:03.521021 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m09:35:03.521239 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m09:35:03.536411 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '52d5580e-b6a3-4139-8b17-f908d773fa46', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7454641a1c50>]}
+[0m09:35:03.584003 [debug] [MainThread]: Wrote artifact WritableManifest to /project/src/ili_utils/target/manifest.json
+[0m09:35:03.585800 [debug] [MainThread]: Wrote artifact SemanticManifest to /project/src/ili_utils/target/semantic_manifest.json
+[0m09:35:03.599980 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '52d5580e-b6a3-4139-8b17-f908d773fa46', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7454641fe710>]}
+[0m09:35:03.600473 [info ] [MainThread]: Found 1 analysis, 591 macros
+[0m09:35:03.600791 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '52d5580e-b6a3-4139-8b17-f908d773fa46', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x745464335210>]}
+[0m09:35:03.602119 [info ] [MainThread]: 
+[0m09:35:03.602446 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m09:35:03.602673 [info ] [MainThread]: 
+[0m09:35:03.603070 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m09:35:03.696555 [debug] [MainThread]: Using postgres connection "master"
+[0m09:35:03.696995 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "package_dev", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m09:35:03.697278 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m09:35:03.722971 [debug] [MainThread]: SQL status: SELECT 63 in 0.026 seconds
+[0m09:35:03.728532 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '52d5580e-b6a3-4139-8b17-f908d773fa46', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x745464324350>]}
+[0m09:35:03.729045 [debug] [MainThread]: On master: ROLLBACK
+[0m09:35:03.729596 [debug] [MainThread]: On master: Close
+[0m09:35:03.734837 [debug] [Thread-1 (]: Began running node analysis.ili_utils.upsert_test
+[0m09:35:03.735767 [debug] [Thread-1 (]: Acquiring new postgres connection 'analysis.ili_utils.upsert_test'
+[0m09:35:03.736050 [debug] [Thread-1 (]: Began compiling node analysis.ili_utils.upsert_test
+[0m09:35:03.763981 [debug] [Thread-1 (]: Using postgres connection "analysis.ili_utils.upsert_test"
+[0m09:35:03.764408 [debug] [Thread-1 (]: On analysis.ili_utils.upsert_test: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "package_dev", "target_name": "dev", "node_id": "analysis.ili_utils.upsert_test"} */
+
+      select
+          column_name,
+          data_type,
+          character_maximum_length,
+          numeric_precision,
+          numeric_scale
+
+      from "test-db".INFORMATION_SCHEMA.columns
+      where table_name = 'upsert_test'
+        
+        and table_schema = 'dbt_default'
+        
+      order by ordinal_position
+
+  
+[0m09:35:03.764697 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m09:35:03.787537 [debug] [Thread-1 (]: SQL status: SELECT 0 in 0.023 seconds
+[0m09:35:03.791949 [debug] [Thread-1 (]: Using postgres connection "analysis.ili_utils.upsert_test"
+[0m09:35:03.792355 [debug] [Thread-1 (]: On analysis.ili_utils.upsert_test: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "package_dev", "target_name": "dev", "node_id": "analysis.ili_utils.upsert_test"} */
+
+    
+    INSERT INTO prod_gl_arten.artvorkommen_gl_pt(
+      -- Get list of column names present in boundary model
+      -- assumption: boundary model column names match target column names 
+      
+    ) 
+    SELECT
+      *
+    FROM "test-db"."dbt_default"."upsert_test"
+    ON CONFLICT (conflict_target) DO UPDATE
+    SET 
+      
+  
+  
+[0m09:35:03.793050 [debug] [Thread-1 (]: Postgres adapter: Postgres error: syntax error at or near ")"
+LINE 8:     ) 
+            ^
+
+[0m09:35:03.793401 [debug] [Thread-1 (]: On analysis.ili_utils.upsert_test: ROLLBACK
+[0m09:35:03.794897 [debug] [Thread-1 (]: On analysis.ili_utils.upsert_test: Close
+[0m09:35:03.801219 [debug] [Thread-1 (]: Database Error in analysis upsert_test (analyses/upsert_test.sql)
+  syntax error at or near ")"
+  LINE 8:     ) 
+              ^
+[0m09:35:03.801784 [debug] [Thread-1 (]: Finished running node analysis.ili_utils.upsert_test
+[0m09:35:03.802403 [debug] [Thread-4 (]: Marking all children of 'analysis.ili_utils.upsert_test' to be skipped because of status 'error'.  Reason: Database Error in analysis upsert_test (analyses/upsert_test.sql)
+  syntax error at or near ")"
+  LINE 8:     ) 
+              ^.
+[0m09:35:03.803975 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m09:35:03.804905 [debug] [MainThread]: Connection 'analysis.ili_utils.upsert_test' was properly closed.
+[0m09:35:03.805360 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Database Error in analysis upsert_test (analyses/upsert_test.sql)
+    syntax error at or near ")"
+    LINE 8:     ) 
+                ^
+[0m09:35:03.806205 [debug] [MainThread]: Resource report: {"command_name": "compile", "command_success": false, "command_wall_clock_time": 0.7304324, "process_in_blocks": "88", "process_kernel_time": 0.377781, "process_mem_max_rss": "125000", "process_out_blocks": "1192", "process_user_time": 2.302572}
+[0m09:35:03.806647 [debug] [MainThread]: Command `dbt compile` failed at 09:35:03.806564 after 0.73 seconds
+[0m09:35:03.806960 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7454648f9e50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7454642a3110>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x745463e21650>]}
+[0m09:35:03.807274 [debug] [MainThread]: Flushing usage events
+[0m09:35:04.344040 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m09:36:59.372160 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77d79618db50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77d7963d4290>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77d7963d4a90>]}
+
+
+============================== 09:36:59.377744 | 2623eb5f-58ee-48ff-933d-e31658744eec ==============================
+[0m09:36:59.377744 [info ] [MainThread]: Running with dbt=1.11.7
+[0m09:36:59.378249 [debug] [MainThread]: running dbt with arguments {'fail_fast': 'False', 'introspect': 'True', 'invocation_command': 'dbt compile', 'indirect_selection': 'eager', 'no_print': 'None', 'profiles_dir': '/project/src/ili_utils', 'debug': 'False', 'printer_width': '80', 'static_parser': 'True', 'partial_parse': 'True', 'log_cache_events': 'False', 'send_anonymous_usage_stats': 'True', 'empty': 'False', 'write_json': 'True', 'use_experimental_parser': 'False', 'quiet': 'False', 'warn_error': 'None', 'log_format': 'default', 'version_check': 'True', 'log_path': '/project/src/ili_utils/logs', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'use_colors': 'True', 'cache_selected_only': 'False'}
+[0m09:36:59.514879 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '2623eb5f-58ee-48ff-933d-e31658744eec', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77d797054190>]}
+[0m09:36:59.564358 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '2623eb5f-58ee-48ff-933d-e31658744eec', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77d799168490>]}
+[0m09:36:59.565130 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m09:36:59.683915 [debug] [MainThread]: checksum: b80718358155fc17c3559352095564dd56ada1cc1a1c0ef2e62c857e71583775, vars: {}, profile: , target: , version: 1.11.7
+[0m09:36:59.750375 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m09:36:59.750741 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m09:36:59.750963 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m09:36:59.765875 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '2623eb5f-58ee-48ff-933d-e31658744eec', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77d79718d7d0>]}
+[0m09:36:59.812601 [debug] [MainThread]: Wrote artifact WritableManifest to /project/src/ili_utils/target/manifest.json
+[0m09:36:59.814840 [debug] [MainThread]: Wrote artifact SemanticManifest to /project/src/ili_utils/target/semantic_manifest.json
+[0m09:36:59.829295 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '2623eb5f-58ee-48ff-933d-e31658744eec', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77d795e5bdd0>]}
+[0m09:36:59.829780 [info ] [MainThread]: Found 1 analysis, 591 macros
+[0m09:36:59.830048 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '2623eb5f-58ee-48ff-933d-e31658744eec', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77d795b8c7d0>]}
+[0m09:36:59.831392 [info ] [MainThread]: 
+[0m09:36:59.831743 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m09:36:59.831970 [info ] [MainThread]: 
+[0m09:36:59.832392 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m09:36:59.930489 [debug] [MainThread]: Using postgres connection "master"
+[0m09:36:59.930925 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "package_dev", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m09:36:59.931230 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m09:36:59.956927 [debug] [MainThread]: SQL status: SELECT 63 in 0.026 seconds
+[0m09:36:59.963261 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '2623eb5f-58ee-48ff-933d-e31658744eec', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77d7959e5590>]}
+[0m09:36:59.963795 [debug] [MainThread]: On master: ROLLBACK
+[0m09:36:59.964221 [debug] [MainThread]: On master: Close
+[0m09:36:59.968901 [debug] [Thread-1 (]: Began running node analysis.ili_utils.upsert_test
+[0m09:36:59.969667 [debug] [Thread-1 (]: Acquiring new postgres connection 'analysis.ili_utils.upsert_test'
+[0m09:36:59.970256 [debug] [Thread-1 (]: Began compiling node analysis.ili_utils.upsert_test
+[0m09:37:00.012675 [debug] [Thread-1 (]: Using postgres connection "analysis.ili_utils.upsert_test"
+[0m09:37:00.013276 [debug] [Thread-1 (]: On analysis.ili_utils.upsert_test: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "package_dev", "target_name": "dev", "node_id": "analysis.ili_utils.upsert_test"} */
+
+      select
+          column_name,
+          data_type,
+          character_maximum_length,
+          numeric_precision,
+          numeric_scale
+
+      from "test-db".INFORMATION_SCHEMA.columns
+      where table_name = 'upsert_test'
+        
+        and table_schema = 'dbt_default'
+        
+      order by ordinal_position
+
+  
+[0m09:37:00.013746 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m09:37:00.042413 [debug] [Thread-1 (]: SQL status: SELECT 0 in 0.029 seconds
+[0m09:37:00.048364 [debug] [Thread-1 (]: Using postgres connection "analysis.ili_utils.upsert_test"
+[0m09:37:00.048957 [debug] [Thread-1 (]: On analysis.ili_utils.upsert_test: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "package_dev", "target_name": "dev", "node_id": "analysis.ili_utils.upsert_test"} */
+
+    
+    INSERT INTO prod_gl_arten.artvorkommen_gl_pt(
+      -- Get list of column names present in boundary model
+      -- assumption: boundary model column names match target column names 
+      
+    ) 
+    SELECT
+      *
+    FROM "test-db"."dbt_default"."upsert_test"
+    ON CONFLICT (geometrie, funddatum, art_wiss) DO UPDATE
+    SET 
+      
+  
+  
+[0m09:37:00.049807 [debug] [Thread-1 (]: Postgres adapter: Postgres error: syntax error at or near ")"
+LINE 8:     ) 
+            ^
+
+[0m09:37:00.050346 [debug] [Thread-1 (]: On analysis.ili_utils.upsert_test: ROLLBACK
+[0m09:37:00.052436 [debug] [Thread-1 (]: On analysis.ili_utils.upsert_test: Close
+[0m09:37:00.058357 [debug] [Thread-1 (]: Database Error in analysis upsert_test (analyses/upsert_test.sql)
+  syntax error at or near ")"
+  LINE 8:     ) 
+              ^
+[0m09:37:00.059214 [debug] [Thread-1 (]: Finished running node analysis.ili_utils.upsert_test
+[0m09:37:00.060178 [debug] [Thread-4 (]: Marking all children of 'analysis.ili_utils.upsert_test' to be skipped because of status 'error'.  Reason: Database Error in analysis upsert_test (analyses/upsert_test.sql)
+  syntax error at or near ")"
+  LINE 8:     ) 
+              ^.
+[0m09:37:00.061620 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m09:37:00.062422 [debug] [MainThread]: Connection 'analysis.ili_utils.upsert_test' was properly closed.
+[0m09:37:00.063004 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Database Error in analysis upsert_test (analyses/upsert_test.sql)
+    syntax error at or near ")"
+    LINE 8:     ) 
+                ^
+[0m09:37:00.064184 [debug] [MainThread]: Resource report: {"command_name": "compile", "command_success": false, "command_wall_clock_time": 0.73479086, "process_in_blocks": "0", "process_kernel_time": 0.369867, "process_mem_max_rss": "124860", "process_out_blocks": "1208", "process_user_time": 2.173342}
+[0m09:37:00.064802 [debug] [MainThread]: Command `dbt compile` failed at 09:37:00.064681 after 0.74 seconds
+[0m09:37:00.065218 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77d7960b4b90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77d7959a2550>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77d79ad80f10>]}
+[0m09:37:00.065685 [debug] [MainThread]: Flushing usage events
+[0m09:37:00.872923 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m09:38:08.979826 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ce1a1c838d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ce1a1fb8890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ce1a310f990>]}
+
+
+============================== 09:38:08.986257 | 73d477e9-30e7-4a2d-b768-86f334fec77a ==============================
+[0m09:38:08.986257 [info ] [MainThread]: Running with dbt=1.11.7
+[0m09:38:08.987061 [debug] [MainThread]: running dbt with arguments {'invocation_command': 'dbt compile', 'send_anonymous_usage_stats': 'True', 'version_check': 'True', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'use_experimental_parser': 'False', 'warn_error': 'None', 'static_parser': 'True', 'profiles_dir': '/project/src/ili_utils', 'log_path': '/project/src/ili_utils/logs', 'write_json': 'True', 'indirect_selection': 'eager', 'use_colors': 'True', 'debug': 'False', 'introspect': 'True', 'log_format': 'default', 'empty': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'target_path': 'None', 'no_print': 'None', 'fail_fast': 'False', 'log_cache_events': 'False', 'printer_width': '80'}
+[0m09:38:09.137297 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '73d477e9-30e7-4a2d-b768-86f334fec77a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ce1a209b390>]}
+[0m09:38:09.193908 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '73d477e9-30e7-4a2d-b768-86f334fec77a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ce1a4d58950>]}
+[0m09:38:09.194675 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m09:38:09.340562 [debug] [MainThread]: checksum: b80718358155fc17c3559352095564dd56ada1cc1a1c0ef2e62c857e71583775, vars: {}, profile: , target: , version: 1.11.7
+[0m09:38:09.413223 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m09:38:09.413600 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m09:38:09.413822 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m09:38:09.429198 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '73d477e9-30e7-4a2d-b768-86f334fec77a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ce1a16fc5d0>]}
+[0m09:38:09.477046 [debug] [MainThread]: Wrote artifact WritableManifest to /project/src/ili_utils/target/manifest.json
+[0m09:38:09.478703 [debug] [MainThread]: Wrote artifact SemanticManifest to /project/src/ili_utils/target/semantic_manifest.json
+[0m09:38:09.493886 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '73d477e9-30e7-4a2d-b768-86f334fec77a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ce1a177cb10>]}
+[0m09:38:09.494355 [info ] [MainThread]: Found 1 analysis, 591 macros
+[0m09:38:09.494650 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '73d477e9-30e7-4a2d-b768-86f334fec77a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ce1a1d91ad0>]}
+[0m09:38:09.495992 [info ] [MainThread]: 
+[0m09:38:09.496347 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m09:38:09.496615 [info ] [MainThread]: 
+[0m09:38:09.497053 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m09:38:09.602080 [debug] [MainThread]: Using postgres connection "master"
+[0m09:38:09.602582 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "package_dev", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m09:38:09.602963 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m09:38:09.629153 [debug] [MainThread]: SQL status: SELECT 63 in 0.026 seconds
+[0m09:38:09.634821 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '73d477e9-30e7-4a2d-b768-86f334fec77a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ce1a1855250>]}
+[0m09:38:09.635391 [debug] [MainThread]: On master: ROLLBACK
+[0m09:38:09.635937 [debug] [MainThread]: On master: Close
+[0m09:38:09.640368 [debug] [Thread-1 (]: Began running node analysis.ili_utils.upsert_test
+[0m09:38:09.640943 [debug] [Thread-1 (]: Acquiring new postgres connection 'analysis.ili_utils.upsert_test'
+[0m09:38:09.641280 [debug] [Thread-1 (]: Began compiling node analysis.ili_utils.upsert_test
+[0m09:38:09.670495 [debug] [Thread-1 (]: Using postgres connection "analysis.ili_utils.upsert_test"
+[0m09:38:09.670923 [debug] [Thread-1 (]: On analysis.ili_utils.upsert_test: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "package_dev", "target_name": "dev", "node_id": "analysis.ili_utils.upsert_test"} */
+
+      select
+          column_name,
+          data_type,
+          character_maximum_length,
+          numeric_precision,
+          numeric_scale
+
+      from "test-db".INFORMATION_SCHEMA.columns
+      where table_name = 'upsert_test'
+        
+        and table_schema = 'dbt_default'
+        
+      order by ordinal_position
+
+  
+[0m09:38:09.671216 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m09:38:09.694636 [debug] [Thread-1 (]: SQL status: SELECT 0 in 0.023 seconds
+[0m09:38:09.699048 [debug] [Thread-1 (]: Using postgres connection "analysis.ili_utils.upsert_test"
+[0m09:38:09.699465 [debug] [Thread-1 (]: On analysis.ili_utils.upsert_test: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "package_dev", "target_name": "dev", "node_id": "analysis.ili_utils.upsert_test"} */
+
+    
+    INSERT INTO prod_gl_arten.artvorkommen_gl_pt(
+      -- Get list of column names present in boundary model
+      -- assumption: boundary model column names match target column names 
+      
+    ) 
+    SELECT
+      *
+    FROM "test-db"."dbt_default"."upsert_test"
+    ON CONFLICT (geometrie, funddatum, art_wiss) DO UPDATE
+    SET 
+      
+  
+  
+[0m09:38:09.700053 [debug] [Thread-1 (]: Postgres adapter: Postgres error: syntax error at or near ")"
+LINE 8:     ) 
+            ^
+
+[0m09:38:09.700396 [debug] [Thread-1 (]: On analysis.ili_utils.upsert_test: ROLLBACK
+[0m09:38:09.701832 [debug] [Thread-1 (]: On analysis.ili_utils.upsert_test: Close
+[0m09:38:09.705231 [debug] [Thread-1 (]: Database Error in analysis upsert_test (analyses/upsert_test.sql)
+  syntax error at or near ")"
+  LINE 8:     ) 
+              ^
+[0m09:38:09.705862 [debug] [Thread-1 (]: Finished running node analysis.ili_utils.upsert_test
+[0m09:38:09.706636 [debug] [Thread-4 (]: Marking all children of 'analysis.ili_utils.upsert_test' to be skipped because of status 'error'.  Reason: Database Error in analysis upsert_test (analyses/upsert_test.sql)
+  syntax error at or near ")"
+  LINE 8:     ) 
+              ^.
+[0m09:38:09.707515 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m09:38:09.707930 [debug] [MainThread]: Connection 'analysis.ili_utils.upsert_test' was properly closed.
+[0m09:38:09.708310 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Database Error in analysis upsert_test (analyses/upsert_test.sql)
+    syntax error at or near ")"
+    LINE 8:     ) 
+                ^
+[0m09:38:09.709138 [debug] [MainThread]: Resource report: {"command_name": "compile", "command_success": false, "command_wall_clock_time": 0.7741711, "process_in_blocks": "0", "process_kernel_time": 0.392926, "process_mem_max_rss": "124776", "process_out_blocks": "1200", "process_user_time": 2.264812}
+[0m09:38:09.709531 [debug] [MainThread]: Command `dbt compile` failed at 09:38:09.709458 after 0.77 seconds
+[0m09:38:09.709821 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ce1a16cb6d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ce1a2098890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ce1a1266d50>]}
+[0m09:38:09.710121 [debug] [MainThread]: Flushing usage events
+[0m09:38:10.503780 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m09:40:07.699199 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e95a2a2a890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e95a19f3c10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e95a4a59dd0>]}
+
+
+============================== 09:40:07.704307 | 0e051d4e-0520-475a-8f1c-d17c2f23dd00 ==============================
+[0m09:40:07.704307 [info ] [MainThread]: Running with dbt=1.11.7
+[0m09:40:07.704801 [debug] [MainThread]: running dbt with arguments {'use_colors': 'True', 'empty': 'False', 'write_json': 'True', 'use_experimental_parser': 'False', 'invocation_command': 'dbt compile', 'partial_parse': 'True', 'debug': 'False', 'static_parser': 'True', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'profiles_dir': '/project/src/ili_utils', 'printer_width': '80', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'version_check': 'True', 'send_anonymous_usage_stats': 'True', 'log_format': 'default', 'warn_error': 'None', 'fail_fast': 'False', 'cache_selected_only': 'False', 'log_path': '/project/src/ili_utils/logs', 'introspect': 'True', 'target_path': 'None', 'quiet': 'False'}
+[0m09:40:07.842992 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '0e051d4e-0520-475a-8f1c-d17c2f23dd00', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e95a174fe50>]}
+[0m09:40:07.892319 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '0e051d4e-0520-475a-8f1c-d17c2f23dd00', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e95a4a70fd0>]}
+[0m09:40:07.893079 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m09:40:08.013312 [debug] [MainThread]: checksum: b80718358155fc17c3559352095564dd56ada1cc1a1c0ef2e62c857e71583775, vars: {}, profile: , target: , version: 1.11.7
+[0m09:40:08.080289 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m09:40:08.080805 [debug] [MainThread]: Partial parsing: updated file: ili_utils://analyses/upsert_test.sql
+[0m09:40:08.236513 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '0e051d4e-0520-475a-8f1c-d17c2f23dd00', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e95a199fad0>]}
+[0m09:40:08.335352 [debug] [MainThread]: Wrote artifact WritableManifest to /project/src/ili_utils/target/manifest.json
+[0m09:40:08.337036 [debug] [MainThread]: Wrote artifact SemanticManifest to /project/src/ili_utils/target/semantic_manifest.json
+[0m09:40:08.351310 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '0e051d4e-0520-475a-8f1c-d17c2f23dd00', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e95a1b6ac90>]}
+[0m09:40:08.351777 [info ] [MainThread]: Found 1 analysis, 591 macros
+[0m09:40:08.352071 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '0e051d4e-0520-475a-8f1c-d17c2f23dd00', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e95a19b4c10>]}
+[0m09:40:08.353413 [info ] [MainThread]: 
+[0m09:40:08.353753 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m09:40:08.353980 [info ] [MainThread]: 
+[0m09:40:08.354381 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m09:40:08.389191 [debug] [MainThread]: Using postgres connection "master"
+[0m09:40:08.389638 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "package_dev", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m09:40:08.389932 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m09:40:08.414377 [debug] [MainThread]: SQL status: SELECT 63 in 0.024 seconds
+[0m09:40:08.416528 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '0e051d4e-0520-475a-8f1c-d17c2f23dd00', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e95a12d87d0>]}
+[0m09:40:08.416911 [debug] [MainThread]: On master: ROLLBACK
+[0m09:40:08.417383 [debug] [MainThread]: On master: Close
+[0m09:40:08.421426 [debug] [Thread-1 (]: Began running node analysis.ili_utils.upsert_test
+[0m09:40:08.422146 [debug] [Thread-1 (]: Acquiring new postgres connection 'analysis.ili_utils.upsert_test'
+[0m09:40:08.422450 [debug] [Thread-1 (]: Began compiling node analysis.ili_utils.upsert_test
+[0m09:40:08.439211 [debug] [Thread-1 (]: Using postgres connection "analysis.ili_utils.upsert_test"
+[0m09:40:08.439631 [debug] [Thread-1 (]: On analysis.ili_utils.upsert_test: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "package_dev", "target_name": "dev", "node_id": "analysis.ili_utils.upsert_test"} */
+
+      select
+          column_name,
+          data_type,
+          character_maximum_length,
+          numeric_precision,
+          numeric_scale
+
+      from "test-db".INFORMATION_SCHEMA.columns
+      where table_name = 'upsert_test'
+        
+        and table_schema = 'dbt_default'
+        
+      order by ordinal_position
+
+  
+[0m09:40:08.439915 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m09:40:08.462455 [debug] [Thread-1 (]: SQL status: SELECT 0 in 0.022 seconds
+[0m09:40:08.465548 [debug] [Thread-1 (]: Using postgres connection "analysis.ili_utils.upsert_test"
+[0m09:40:08.465947 [debug] [Thread-1 (]: On analysis.ili_utils.upsert_test: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "package_dev", "target_name": "dev", "node_id": "analysis.ili_utils.upsert_test"} */
+
+    
+    INSERT INTO prod_gl_arten.artvorkommen_gl_pt(
+      -- Get list of column names present in boundary model
+      -- assumption: boundary model column names match target column names 
+      
+    ) 
+    SELECT
+      *
+    FROM "test-db"."dbt_default"."upsert_test"
+    ON CONFLICT (geometrie, funddatum, art_wiss) DO UPDATE
+    SET 
+      
+  
+  
+[0m09:40:08.467106 [debug] [Thread-1 (]: Postgres adapter: Postgres error: syntax error at or near ")"
+LINE 8:     ) 
+            ^
+
+[0m09:40:08.467503 [debug] [Thread-1 (]: On analysis.ili_utils.upsert_test: ROLLBACK
+[0m09:40:08.468985 [debug] [Thread-1 (]: On analysis.ili_utils.upsert_test: Close
+[0m09:40:08.472245 [debug] [Thread-1 (]: Database Error in analysis upsert_test (analyses/upsert_test.sql)
+  syntax error at or near ")"
+  LINE 8:     ) 
+              ^
+[0m09:40:08.472903 [debug] [Thread-1 (]: Finished running node analysis.ili_utils.upsert_test
+[0m09:40:08.473382 [debug] [Thread-4 (]: Marking all children of 'analysis.ili_utils.upsert_test' to be skipped because of status 'error'.  Reason: Database Error in analysis upsert_test (analyses/upsert_test.sql)
+  syntax error at or near ")"
+  LINE 8:     ) 
+              ^.
+[0m09:40:08.474374 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m09:40:08.475277 [debug] [MainThread]: Connection 'analysis.ili_utils.upsert_test' was properly closed.
+[0m09:40:08.475679 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Database Error in analysis upsert_test (analyses/upsert_test.sql)
+    syntax error at or near ")"
+    LINE 8:     ) 
+                ^
+[0m09:40:08.476516 [debug] [MainThread]: Resource report: {"command_name": "compile", "command_success": false, "command_wall_clock_time": 0.8204721, "process_in_blocks": "0", "process_kernel_time": 0.348108, "process_mem_max_rss": "126188", "process_out_blocks": "2384", "process_user_time": 2.270183}
+[0m09:40:08.476922 [debug] [MainThread]: Command `dbt compile` failed at 09:40:08.476850 after 0.82 seconds
+[0m09:40:08.477216 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e95a19fd390>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e95a1270310>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e95a6648c90>]}
+[0m09:40:08.477530 [debug] [MainThread]: Flushing usage events
+[0m09:40:09.081529 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m09:40:33.203266 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77688df3e050>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77688df64610>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77688df3e910>]}
+
+
+============================== 09:40:33.208240 | 56b10cda-a460-46af-b4f9-b57d5550dda6 ==============================
+[0m09:40:33.208240 [info ] [MainThread]: Running with dbt=1.11.7
+[0m09:40:33.208684 [debug] [MainThread]: running dbt with arguments {'log_format': 'default', 'debug': 'False', 'send_anonymous_usage_stats': 'True', 'write_json': 'True', 'no_print': 'None', 'log_cache_events': 'False', 'quiet': 'False', 'indirect_selection': 'eager', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'empty': 'False', 'version_check': 'True', 'target_path': 'None', 'introspect': 'True', 'fail_fast': 'False', 'profiles_dir': '/project/src/ili_utils', 'printer_width': '80', 'use_colors': 'True', 'log_path': '/project/src/ili_utils/logs', 'warn_error': 'None', 'use_experimental_parser': 'False', 'invocation_command': 'dbt compile', 'cache_selected_only': 'False', 'partial_parse': 'True', 'static_parser': 'True'}
+[0m09:40:33.346915 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '56b10cda-a460-46af-b4f9-b57d5550dda6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77688e041950>]}
+[0m09:40:33.395342 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '56b10cda-a460-46af-b4f9-b57d5550dda6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x776891000990>]}
+[0m09:40:33.396083 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m09:40:33.518200 [debug] [MainThread]: checksum: b80718358155fc17c3559352095564dd56ada1cc1a1c0ef2e62c857e71583775, vars: {}, profile: , target: , version: 1.11.7
+[0m09:40:33.583927 [debug] [MainThread]: Partial parsing enabled: 1 files deleted, 1 files added, 0 files changed.
+[0m09:40:33.584420 [debug] [MainThread]: Partial parsing: added file: ili_utils://models/upsert_test.sql
+[0m09:40:33.584680 [debug] [MainThread]: Partial parsing: deleted file: ili_utils://analyses/upsert_test.sql
+[0m09:40:33.862526 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '56b10cda-a460-46af-b4f9-b57d5550dda6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77688d9de290>]}
+[0m09:40:33.910626 [debug] [MainThread]: Wrote artifact WritableManifest to /project/src/ili_utils/target/manifest.json
+[0m09:40:33.912494 [debug] [MainThread]: Wrote artifact SemanticManifest to /project/src/ili_utils/target/semantic_manifest.json
+[0m09:40:33.926547 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '56b10cda-a460-46af-b4f9-b57d5550dda6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77688d990d10>]}
+[0m09:40:33.927011 [info ] [MainThread]: Found 1 model, 591 macros
+[0m09:40:33.927286 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '56b10cda-a460-46af-b4f9-b57d5550dda6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77688d6856d0>]}
+[0m09:40:33.928619 [info ] [MainThread]: 
+[0m09:40:33.928964 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m09:40:33.929215 [info ] [MainThread]: 
+[0m09:40:33.929651 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m09:40:33.930498 [debug] [ThreadPool]: Acquiring new postgres connection 'list_test-db_dbt_default'
+[0m09:40:33.966171 [debug] [ThreadPool]: Using postgres connection "list_test-db_dbt_default"
+[0m09:40:33.966579 [debug] [ThreadPool]: On list_test-db_dbt_default: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "package_dev", "target_name": "dev", "connection_name": "list_test-db_dbt_default"} */
+select
+      'test-db' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'dbt_default'
+    union all
+    select
+      'test-db' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'dbt_default'
+    union all
+    select
+      'test-db' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'dbt_default'
+  
+[0m09:40:33.966819 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m09:40:33.982451 [debug] [ThreadPool]: SQL status: SELECT 0 in 0.015 seconds
+[0m09:40:33.984167 [debug] [ThreadPool]: On list_test-db_dbt_default: ROLLBACK
+[0m09:40:33.984769 [debug] [ThreadPool]: On list_test-db_dbt_default: Close
+[0m09:40:33.988986 [debug] [MainThread]: Using postgres connection "master"
+[0m09:40:33.989425 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "package_dev", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m09:40:33.989727 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m09:40:34.014048 [debug] [MainThread]: SQL status: SELECT 63 in 0.024 seconds
+[0m09:40:34.016392 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '56b10cda-a460-46af-b4f9-b57d5550dda6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77688da39350>]}
+[0m09:40:34.016772 [debug] [MainThread]: On master: ROLLBACK
+[0m09:40:34.017235 [debug] [MainThread]: On master: Close
+[0m09:40:34.020909 [debug] [Thread-1 (]: Began running node model.ili_utils.upsert_test
+[0m09:40:34.021399 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_test-db_dbt_default, now model.ili_utils.upsert_test)
+[0m09:40:34.021698 [debug] [Thread-1 (]: Began compiling node model.ili_utils.upsert_test
+[0m09:40:34.038362 [debug] [Thread-1 (]: Using postgres connection "model.ili_utils.upsert_test"
+[0m09:40:34.038783 [debug] [Thread-1 (]: On model.ili_utils.upsert_test: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "package_dev", "target_name": "dev", "node_id": "model.ili_utils.upsert_test"} */
+
+      select
+          column_name,
+          data_type,
+          character_maximum_length,
+          numeric_precision,
+          numeric_scale
+
+      from "test-db".INFORMATION_SCHEMA.columns
+      where table_name = 'upsert_test'
+        
+        and table_schema = 'dbt_default'
+        
+      order by ordinal_position
+
+  
+[0m09:40:34.039063 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m09:40:34.061042 [debug] [Thread-1 (]: SQL status: SELECT 0 in 0.022 seconds
+[0m09:40:34.064042 [debug] [Thread-1 (]: Using postgres connection "model.ili_utils.upsert_test"
+[0m09:40:34.064486 [debug] [Thread-1 (]: On model.ili_utils.upsert_test: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "package_dev", "target_name": "dev", "node_id": "model.ili_utils.upsert_test"} */
+
+    
+    INSERT INTO prod_gl_arten.artvorkommen_gl_pt(
+      -- Get list of column names present in boundary model
+      -- assumption: boundary model column names match target column names 
+      
+    ) 
+    SELECT
+      *
+    FROM "test-db"."dbt_default"."upsert_test"
+    ON CONFLICT (geometrie, funddatum, art_wiss) DO UPDATE
+    SET 
+      
+  
+  
+[0m09:40:34.065232 [debug] [Thread-1 (]: Postgres adapter: Postgres error: syntax error at or near ")"
+LINE 8:     ) 
+            ^
+
+[0m09:40:34.065910 [debug] [Thread-1 (]: On model.ili_utils.upsert_test: ROLLBACK
+[0m09:40:34.067860 [debug] [Thread-1 (]: On model.ili_utils.upsert_test: Close
+[0m09:40:34.071053 [debug] [Thread-1 (]: Database Error in model upsert_test (models/upsert_test.sql)
+  syntax error at or near ")"
+  LINE 8:     ) 
+              ^
+[0m09:40:34.071669 [debug] [Thread-1 (]: Finished running node model.ili_utils.upsert_test
+[0m09:40:34.072533 [debug] [Thread-4 (]: Marking all children of 'model.ili_utils.upsert_test' to be skipped because of status 'error'.  Reason: Database Error in model upsert_test (models/upsert_test.sql)
+  syntax error at or near ")"
+  LINE 8:     ) 
+              ^.
+[0m09:40:34.074030 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m09:40:34.074694 [debug] [MainThread]: Connection 'model.ili_utils.upsert_test' was properly closed.
+[0m09:40:34.075394 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Database Error in model upsert_test (models/upsert_test.sql)
+    syntax error at or near ")"
+    LINE 8:     ) 
+                ^
+[0m09:40:34.076247 [debug] [MainThread]: Resource report: {"command_name": "compile", "command_success": false, "command_wall_clock_time": 0.9155067, "process_in_blocks": "0", "process_kernel_time": 0.393259, "process_mem_max_rss": "129108", "process_out_blocks": "2384", "process_user_time": 2.262984}
+[0m09:40:34.076662 [debug] [MainThread]: Command `dbt compile` failed at 09:40:34.076590 after 0.92 seconds
+[0m09:40:34.076949 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77688e0413d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77688d859510>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77688d9c1710>]}
+[0m09:40:34.077250 [debug] [MainThread]: Flushing usage events
+[0m09:40:34.573386 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m09:40:55.268576 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d79d73f6890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d79d74f18d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d79d73f5fd0>]}
+
+
+============================== 09:40:55.273657 | 0c58f61b-6c15-4112-a264-3a3722f924ee ==============================
+[0m09:40:55.273657 [info ] [MainThread]: Running with dbt=1.11.7
+[0m09:40:55.274143 [debug] [MainThread]: running dbt with arguments {'debug': 'False', 'use_colors': 'True', 'cache_selected_only': 'False', 'send_anonymous_usage_stats': 'True', 'log_cache_events': 'False', 'log_format': 'default', 'static_parser': 'True', 'no_print': 'None', 'empty': 'False', 'version_check': 'True', 'log_path': '/project/src/ili_utils/logs', 'indirect_selection': 'eager', 'partial_parse': 'True', 'invocation_command': 'dbt compile', 'printer_width': '80', 'introspect': 'True', 'write_json': 'True', 'warn_error': 'None', 'target_path': 'None', 'quiet': 'False', 'fail_fast': 'False', 'profiles_dir': '/project/src/ili_utils', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'use_experimental_parser': 'False'}
+[0m09:40:55.422139 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '0c58f61b-6c15-4112-a264-3a3722f924ee', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d79d71908d0>]}
+[0m09:40:55.471855 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '0c58f61b-6c15-4112-a264-3a3722f924ee', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d79dbc26d90>]}
+[0m09:40:55.472644 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m09:40:55.591590 [debug] [MainThread]: checksum: b80718358155fc17c3559352095564dd56ada1cc1a1c0ef2e62c857e71583775, vars: {}, profile: , target: , version: 1.11.7
+[0m09:40:55.662590 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m09:40:55.663122 [debug] [MainThread]: Partial parsing: updated file: ili_utils://models/upsert_test.sql
+[0m09:40:55.926742 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '0c58f61b-6c15-4112-a264-3a3722f924ee', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d79d6ed97d0>]}
+[0m09:40:55.975828 [debug] [MainThread]: Wrote artifact WritableManifest to /project/src/ili_utils/target/manifest.json
+[0m09:40:55.977544 [debug] [MainThread]: Wrote artifact SemanticManifest to /project/src/ili_utils/target/semantic_manifest.json
+[0m09:40:55.993139 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '0c58f61b-6c15-4112-a264-3a3722f924ee', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d79d6cf4910>]}
+[0m09:40:55.993754 [info ] [MainThread]: Found 1 model, 591 macros
+[0m09:40:55.994134 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '0c58f61b-6c15-4112-a264-3a3722f924ee', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d79d6ed9850>]}
+[0m09:40:55.995867 [info ] [MainThread]: 
+[0m09:40:55.996378 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m09:40:55.996712 [info ] [MainThread]: 
+[0m09:40:55.997226 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m09:40:55.998295 [debug] [ThreadPool]: Acquiring new postgres connection 'list_test-db_dbt_default'
+[0m09:40:56.037756 [debug] [ThreadPool]: Using postgres connection "list_test-db_dbt_default"
+[0m09:40:56.038160 [debug] [ThreadPool]: On list_test-db_dbt_default: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "package_dev", "target_name": "dev", "connection_name": "list_test-db_dbt_default"} */
+select
+      'test-db' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'dbt_default'
+    union all
+    select
+      'test-db' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'dbt_default'
+    union all
+    select
+      'test-db' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'dbt_default'
+  
+[0m09:40:56.038419 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m09:40:56.054918 [debug] [ThreadPool]: SQL status: SELECT 0 in 0.016 seconds
+[0m09:40:56.056191 [debug] [ThreadPool]: On list_test-db_dbt_default: ROLLBACK
+[0m09:40:56.056733 [debug] [ThreadPool]: On list_test-db_dbt_default: Close
+[0m09:40:56.060696 [debug] [MainThread]: Using postgres connection "master"
+[0m09:40:56.061117 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "package_dev", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m09:40:56.061441 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m09:40:56.086407 [debug] [MainThread]: SQL status: SELECT 63 in 0.025 seconds
+[0m09:40:56.089255 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '0c58f61b-6c15-4112-a264-3a3722f924ee', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d79d6ee6190>]}
+[0m09:40:56.089680 [debug] [MainThread]: On master: ROLLBACK
+[0m09:40:56.090108 [debug] [MainThread]: On master: Close
+[0m09:40:56.094094 [debug] [Thread-1 (]: Began running node model.ili_utils.upsert_test
+[0m09:40:56.094956 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_test-db_dbt_default, now model.ili_utils.upsert_test)
+[0m09:40:56.095434 [debug] [Thread-1 (]: Began compiling node model.ili_utils.upsert_test
+[0m09:40:56.112136 [debug] [Thread-1 (]: Using postgres connection "model.ili_utils.upsert_test"
+[0m09:40:56.112570 [debug] [Thread-1 (]: On model.ili_utils.upsert_test: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "package_dev", "target_name": "dev", "node_id": "model.ili_utils.upsert_test"} */
+
+      select
+          column_name,
+          data_type,
+          character_maximum_length,
+          numeric_precision,
+          numeric_scale
+
+      from "test-db".INFORMATION_SCHEMA.columns
+      where table_name = 'upsert_test'
+        
+        and table_schema = 'dbt_default'
+        
+      order by ordinal_position
+
+  
+[0m09:40:56.112857 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m09:40:56.136223 [debug] [Thread-1 (]: SQL status: SELECT 0 in 0.023 seconds
+[0m09:40:56.139119 [debug] [Thread-1 (]: Using postgres connection "model.ili_utils.upsert_test"
+[0m09:40:56.139522 [debug] [Thread-1 (]: On model.ili_utils.upsert_test: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "package_dev", "target_name": "dev", "node_id": "model.ili_utils.upsert_test"} */
+
+    
+    INSERT INTO prod_gl_arten.artvorkommen_gl_pt(
+      -- Get list of column names present in boundary model
+      -- assumption: boundary model column names match target column names 
+      
+    ) 
+    SELECT
+      *
+    FROM "test-db"."dbt_default"."upsert_test"
+    ON CONFLICT (geometrie, funddatum, art_wiss) DO UPDATE
+    SET 
+      
+  
+  
+[0m09:40:56.140435 [debug] [Thread-1 (]: Postgres adapter: Postgres error: syntax error at or near ")"
+LINE 8:     ) 
+            ^
+
+[0m09:40:56.141123 [debug] [Thread-1 (]: On model.ili_utils.upsert_test: ROLLBACK
+[0m09:40:56.142803 [debug] [Thread-1 (]: On model.ili_utils.upsert_test: Close
+[0m09:40:56.146019 [debug] [Thread-1 (]: Database Error in model upsert_test (models/upsert_test.sql)
+  syntax error at or near ")"
+  LINE 8:     ) 
+              ^
+[0m09:40:56.146618 [debug] [Thread-1 (]: Finished running node model.ili_utils.upsert_test
+[0m09:40:56.147485 [debug] [Thread-4 (]: Marking all children of 'model.ili_utils.upsert_test' to be skipped because of status 'error'.  Reason: Database Error in model upsert_test (models/upsert_test.sql)
+  syntax error at or near ")"
+  LINE 8:     ) 
+              ^.
+[0m09:40:56.149083 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m09:40:56.149561 [debug] [MainThread]: Connection 'model.ili_utils.upsert_test' was properly closed.
+[0m09:40:56.149922 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Database Error in model upsert_test (models/upsert_test.sql)
+    syntax error at or near ")"
+    LINE 8:     ) 
+                ^
+[0m09:40:56.151129 [debug] [MainThread]: Resource report: {"command_name": "compile", "command_success": false, "command_wall_clock_time": 0.92541707, "process_in_blocks": "0", "process_kernel_time": 0.415914, "process_mem_max_rss": "128852", "process_out_blocks": "2384", "process_user_time": 2.344881}
+[0m09:40:56.151768 [debug] [MainThread]: Command `dbt compile` failed at 09:40:56.151695 after 0.93 seconds
+[0m09:40:56.152055 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d79d73f5310>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d79d6d14610>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d79d754f050>]}
+[0m09:40:56.152369 [debug] [MainThread]: Flushing usage events
+[0m09:40:56.704481 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m09:45:37.217011 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x701120f67f90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7011211642d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x701120f2b5d0>]}
+
+
+============================== 09:45:37.222076 | f1c36a69-60bf-4e03-97ed-93c8cdc07781 ==============================
+[0m09:45:37.222076 [info ] [MainThread]: Running with dbt=1.11.7
+[0m09:45:37.222519 [debug] [MainThread]: running dbt with arguments {'indirect_selection': 'eager', 'target_path': 'None', 'fail_fast': 'False', 'use_experimental_parser': 'False', 'introspect': 'True', 'quiet': 'False', 'static_parser': 'True', 'printer_width': '80', 'invocation_command': 'dbt clean', 'log_format': 'default', 'version_check': 'True', 'profiles_dir': '/project/src/ili_utils', 'no_print': 'None', 'write_json': 'True', 'log_cache_events': 'False', 'empty': 'None', 'warn_error': 'None', 'use_colors': 'True', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'cache_selected_only': 'False', 'debug': 'False', 'log_path': '/project/src/ili_utils/logs'}
+[0m09:45:37.325626 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'f1c36a69-60bf-4e03-97ed-93c8cdc07781', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x701120e05cd0>]}
+[0m09:45:37.343947 [debug] [MainThread]: Resource report: {"command_name": "clean", "command_success": true, "command_wall_clock_time": 0.17010772, "process_in_blocks": "0", "process_kernel_time": 0.267021, "process_mem_max_rss": "110788", "process_out_blocks": "8", "process_user_time": 1.727669}
+[0m09:45:37.344421 [debug] [MainThread]: Command `dbt clean` succeeded at 09:45:37.344291 after 0.17 seconds
+[0m09:45:37.344725 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x701120f7efd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x701125bc0a10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x701125bc0c90>]}
+[0m09:45:37.345021 [debug] [MainThread]: Flushing usage events
+[0m09:45:37.996007 [debug] [MainThread]: An error was encountered while trying to flush usage events
