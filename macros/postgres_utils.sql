@@ -25,7 +25,7 @@
     SELECT
       *
     FROM {{this}}
-    ON CONFLICT ({{ {{ conflict_target | join(', ') }} }}) DO UPDATE
+    ON CONFLICT ({{ conflict_target | join(', ') }}) DO UPDATE
     SET 
       {% for col in cols -%}
       {{ col }} = EXCLUDED.{{ col }}{% if not loop.last %},{% endif %}
