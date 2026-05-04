@@ -3,7 +3,7 @@
 {% macro upsert_into(
   schema_name, 
   table_name, 
-  conflict_target,
+  conflict_target=[],
   update_except_cols=[]
 ) %}
 
@@ -25,7 +25,7 @@
     SELECT
       *
     FROM {{this}}
-    ON CONFLICT ({{ conflict_target }}) DO UPDATE
+    ON CONFLICT ({{ {{ conflict_target | join(', ') }} }}) DO UPDATE
     SET 
       {% for col in cols -%}
       {{ col }} = EXCLUDED.{{ col }}{% if not loop.last %},{% endif %}
