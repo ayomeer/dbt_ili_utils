@@ -1,15 +1,26 @@
 
 -- conflict target as comma seperated list of columns as string
-{% macro upsert_into(schema_name, table_name, conflict_target) %}
+{% macro upsert_into(
+  schema_name, 
+  table_name, 
+  conflict_target,
+  update_except_cols=[]
+) %}
 
-  {% set cols = dbt_utils.get_filtered_columns_in_relation(this) %}
-  {% set cols_str = cols | join(',\n  ') %}
+  {% set insert_cols = dbt_utils.get_filtered_columns_in_relation(this) %}
+  {% set insert_cols_str = insert_cols | join(',\n  ') %}
+
+  {% set update_cols = dbt_utils.get_filtered_columns_in_relation(
+    this,
+    except=update_except_cols
+  ) %}
+  {% set update_cols_str = update_cols | join(',\n  ') %}
 
   {% set insert_query %}
     INSERT INTO {{schema_name}}.{{table_name}}(
       -- Get list of column names present in boundary model
       -- assumption: boundary model column names match target column names 
-      {{ cols_str }}
+      {{ insert_cols_str }}
     ) 
     SELECT
       *
