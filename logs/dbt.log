@@ -1,31 +1,141 @@
-[0m13:10:27.451618 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71fa30d76910>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71fa341f3690>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71fa30d75190>]}
+[0m07:02:09.550042 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x705fd5ba9290>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x705fd5bb7310>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x705fd5bdc3d0>]}
 
 
-============================== 13:10:27.457428 | b4a39d75-44af-4d4a-9324-408785209368 ==============================
-[0m13:10:27.457428 [info ] [MainThread]: Running with dbt=1.11.7
-[0m13:10:27.457960 [debug] [MainThread]: running dbt with arguments {'cache_selected_only': 'False', 'log_cache_events': 'False', 'no_print': 'None', 'warn_error': 'None', 'empty': 'None', 'send_anonymous_usage_stats': 'True', 'write_json': 'True', 'partial_parse': 'True', 'printer_width': '80', 'use_colors': 'True', 'fail_fast': 'False', 'version_check': 'True', 'static_parser': 'True', 'profiles_dir': '/home/user/.dbt', 'debug': 'False', 'quiet': 'False', 'invocation_command': 'dbt init ili_utils', 'log_path': 'logs', 'use_experimental_parser': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'introspect': 'True', 'indirect_selection': 'eager', 'target_path': 'None', 'log_format': 'default'}
-[0m13:10:27.468713 [info ] [MainThread]: Creating dbt configuration folder at /home/user/.dbt
-[0m13:10:27.470345 [debug] [MainThread]: Starter project path: /home/user/.local/lib/python3.11/site-packages/dbt/include/starter_project
-[0m13:10:27.475630 [info ] [MainThread]: 
-Your new dbt project "ili_utils" was created!
+============================== 07:02:09.555759 | e5d68e5a-873b-471c-bcd2-2db5f1cdbc73 ==============================
+[0m07:02:09.555759 [info ] [MainThread]: Running with dbt=1.11.7
+[0m07:02:09.556495 [debug] [MainThread]: running dbt with arguments {'no_print': 'None', 'indirect_selection': 'eager', 'fail_fast': 'False', 'log_path': '/project/src/ili_utils/logs', 'warn_error': 'None', 'send_anonymous_usage_stats': 'True', 'use_experimental_parser': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_cache_events': 'False', 'quiet': 'False', 'version_check': 'True', 'use_colors': 'True', 'printer_width': '80', 'invocation_command': 'dbt compile', 'static_parser': 'True', 'target_path': 'None', 'empty': 'False', 'partial_parse': 'True', 'profiles_dir': '/home/user/.dbt', 'debug': 'False', 'write_json': 'True', 'log_format': 'default'}
+[0m07:02:09.557417 [error] [MainThread]: Encountered an error:
+Runtime Error
+  dbt cannot run because no profile was specified for this dbt project.
+  To specify a profile for this project, add a line like the this to
+  your dbt_project.yml file:
+  
+  profile: [profile name]
+  
+  Here, [profile name] should be replaced with a profile name
+  defined in your profiles.yml file. You can find profiles.yml here:
+  
+  /home/user/.dbt/profiles.yml
+  
+[0m07:02:09.558422 [debug] [MainThread]: Resource report: {"command_name": "compile", "command_success": false, "command_wall_clock_time": 0.054537345, "process_in_blocks": "0", "process_kernel_time": 0.267028, "process_mem_max_rss": "109684", "process_out_blocks": "8", "process_user_time": 1.620107}
+[0m07:02:09.558899 [debug] [MainThread]: Command `dbt compile` failed at 07:02:09.558797 after 0.06 seconds
+[0m07:02:09.559262 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x705fd5ba9750>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x705fd5caf010>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x705fd5cafe90>]}
+[0m07:02:09.559643 [debug] [MainThread]: Flushing usage events
+[0m07:02:10.675027 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m07:09:30.374313 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ee22e888810>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ee22e85e910>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ee22e888790>]}
 
-For more information on how to configure the profiles.yml file,
-please consult the dbt documentation here:
 
-  https://docs.getdbt.com/docs/configure-your-profile
+============================== 07:09:30.380565 | cc8faf91-6d8c-4749-869a-6d44e7b2f75c ==============================
+[0m07:09:30.380565 [info ] [MainThread]: Running with dbt=1.11.7
+[0m07:09:30.381303 [debug] [MainThread]: running dbt with arguments {'empty': 'None', 'log_path': '/project/src/ili_utils/logs', 'version_check': 'True', 'invocation_command': 'dbt ', 'log_format': 'default', 'introspect': 'True', 'log_cache_events': 'False', 'no_print': 'None', 'send_anonymous_usage_stats': 'True', 'printer_width': '80', 'cache_selected_only': 'False', 'indirect_selection': 'eager', 'target_path': 'None', 'fail_fast': 'False', 'quiet': 'False', 'partial_parse': 'True', 'write_json': 'True', 'debug': 'False', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'profiles_dir': '/home/user/.dbt'}
+[0m07:09:30.530177 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'cc8faf91-6d8c-4749-869a-6d44e7b2f75c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ee22ef9fe90>]}
+[0m07:09:30.555300 [debug] [MainThread]: Set downloads directory='/tmp/dbt-downloads-5ogrl7tl'
+[0m07:09:30.555822 [debug] [MainThread]: Making package index registry request: GET https://hub.getdbt.com/api/v1/index.json
+[0m07:09:30.730355 [debug] [MainThread]: Response from registry index: GET https://hub.getdbt.com/api/v1/index.json 200
+[0m07:09:30.732533 [debug] [MainThread]: Making package registry request: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json
+[0m07:09:30.878838 [debug] [MainThread]: Response from registry: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json 200
+[0m07:09:30.885700 [info ] [MainThread]: Installing dbt-labs/dbt_utils
+[0m07:09:31.223228 [info ] [MainThread]: Installed from version 1.3.3
+[0m07:09:31.223596 [info ] [MainThread]: Up to date!
+[0m07:09:31.223904 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'package', 'label': 'cc8faf91-6d8c-4749-869a-6d44e7b2f75c', 'property_': 'install', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ee22f926250>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ee22e774690>]}
+[0m07:09:31.225064 [debug] [MainThread]: Resource report: {"command_name": "deps", "command_success": true, "command_wall_clock_time": 0.9021013, "process_in_blocks": "0", "process_kernel_time": 0.299557, "process_mem_max_rss": "113132", "process_out_blocks": "2296", "process_user_time": 1.775451}
+[0m07:09:31.225687 [debug] [MainThread]: Command `cli deps` succeeded at 07:09:31.225553 after 0.90 seconds
+[0m07:09:31.226069 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ee2334a8ed0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ee2334a9190>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ee2334a91d0>]}
+[0m07:09:31.226397 [debug] [MainThread]: Flushing usage events
+[0m07:09:32.515455 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m07:10:33.596527 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74fed29df650>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74fed29e5790>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74fed290c590>]}
 
-One more thing:
 
-Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+============================== 07:10:33.601688 | a9bfe6d6-d47a-4e48-bab1-fbb62f9379ad ==============================
+[0m07:10:33.601688 [info ] [MainThread]: Running with dbt=1.11.7
+[0m07:10:33.602157 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'quiet': 'False', 'empty': 'None', 'invocation_command': 'dbt ', 'fail_fast': 'False', 'log_format': 'default', 'send_anonymous_usage_stats': 'True', 'static_parser': 'True', 'warn_error': 'None', 'cache_selected_only': 'False', 'log_cache_events': 'False', 'partial_parse': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_path': '/project/src/ili_utils/logs', 'write_json': 'True', 'printer_width': '80', 'use_colors': 'True', 'debug': 'False', 'no_print': 'None', 'profiles_dir': '/home/user/.dbt', 'introspect': 'True', 'use_experimental_parser': 'False', 'indirect_selection': 'eager'}
+[0m07:10:33.696660 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'a9bfe6d6-d47a-4e48-bab1-fbb62f9379ad', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74fed28e1850>]}
+[0m07:10:33.718034 [debug] [MainThread]: Set downloads directory='/tmp/dbt-downloads-25cdzd_8'
+[0m07:10:33.718522 [debug] [MainThread]: Making package index registry request: GET https://hub.getdbt.com/api/v1/index.json
+[0m07:10:33.885681 [debug] [MainThread]: Response from registry index: GET https://hub.getdbt.com/api/v1/index.json 200
+[0m07:10:33.887741 [debug] [MainThread]: Making package registry request: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json
+[0m07:10:34.002766 [debug] [MainThread]: Response from registry: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json 200
+[0m07:10:34.009855 [info ] [MainThread]: Installing dbt-labs/dbt_utils
+[0m07:10:34.499336 [info ] [MainThread]: Installed from version 1.3.3
+[0m07:10:34.499684 [info ] [MainThread]: Up to date!
+[0m07:10:34.499976 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'package', 'label': 'a9bfe6d6-d47a-4e48-bab1-fbb62f9379ad', 'property_': 'install', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74fed284c090>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74fed27fd8d0>]}
+[0m07:10:34.501126 [debug] [MainThread]: Resource report: {"command_name": "deps", "command_success": true, "command_wall_clock_time": 0.9489778, "process_in_blocks": "0", "process_kernel_time": 0.313622, "process_mem_max_rss": "113028", "process_out_blocks": "2296", "process_user_time": 1.734912}
+[0m07:10:34.501576 [debug] [MainThread]: Command `cli deps` succeeded at 07:10:34.501476 after 0.95 seconds
+[0m07:10:34.501917 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74fed2843cd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74fed753d190>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74fed753d1d0>]}
+[0m07:10:34.502221 [debug] [MainThread]: Flushing usage events
+[0m07:10:35.417365 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m07:13:14.973909 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d64d916ed90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d64d62ff250>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d64d6228a90>]}
 
-  https://community.getdbt.com/
 
-Happy modeling!
+============================== 07:13:14.979329 | 62112593-1f2e-4bf5-8195-15ec14204816 ==============================
+[0m07:13:14.979329 [info ] [MainThread]: Running with dbt=1.11.7
+[0m07:13:14.979779 [debug] [MainThread]: running dbt with arguments {'empty': 'False', 'use_experimental_parser': 'False', 'static_parser': 'True', 'cache_selected_only': 'False', 'debug': 'False', 'log_format': 'default', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'version_check': 'True', 'partial_parse': 'True', 'target_path': 'None', 'log_cache_events': 'False', 'fail_fast': 'False', 'log_path': '/project/src/ili_utils/logs', 'profiles_dir': '/home/user/.dbt', 'write_json': 'True', 'send_anonymous_usage_stats': 'True', 'invocation_command': 'dbt compile', 'warn_error': 'None', 'no_print': 'None', 'introspect': 'True', 'indirect_selection': 'eager', 'use_colors': 'True', 'quiet': 'False', 'printer_width': '80'}
+[0m07:13:14.981716 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Could not find profile named 'package_dev'
+[0m07:13:14.982639 [debug] [MainThread]: Resource report: {"command_name": "compile", "command_success": false, "command_wall_clock_time": 0.0516237, "process_in_blocks": "0", "process_kernel_time": 0.308367, "process_mem_max_rss": "109348", "process_out_blocks": "8", "process_user_time": 1.78853}
+[0m07:13:14.983043 [debug] [MainThread]: Command `dbt compile` failed at 07:13:14.982967 after 0.05 seconds
+[0m07:13:14.983347 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d64dab50410>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d64d5f11550>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d64d5f10810>]}
+[0m07:13:14.983668 [debug] [MainThread]: Flushing usage events
+[0m07:13:15.778466 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m07:15:57.665443 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x775504b26b90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x775501928a50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x775501d4eed0>]}
 
-[0m13:10:27.476227 [info ] [MainThread]: Setting up your profile.
-[0m13:11:10.554870 [info ] [MainThread]: Profile ili_utils written to /home/user/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
-[0m13:11:10.556527 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 43.15154, "process_in_blocks": "1728", "process_kernel_time": 0.327895, "process_mem_max_rss": "111892", "process_out_blocks": "80", "process_user_time": 1.851116}
-[0m13:11:10.557239 [debug] [MainThread]: Command `dbt init` succeeded at 13:11:10.557098 after 43.15 seconds
-[0m13:11:10.557675 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71fa30e72e50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71fa30d74f50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71fa3119c610>]}
-[0m13:11:10.558139 [debug] [MainThread]: Flushing usage events
-[0m13:11:11.634996 [debug] [MainThread]: An error was encountered while trying to flush usage events
+
+============================== 07:15:57.670568 | b1ebaebc-5447-4500-98a5-e2e512148b54 ==============================
+[0m07:15:57.670568 [info ] [MainThread]: Running with dbt=1.11.7
+[0m07:15:57.671025 [debug] [MainThread]: running dbt with arguments {'introspect': 'True', 'send_anonymous_usage_stats': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'empty': 'False', 'partial_parse': 'True', 'version_check': 'True', 'log_cache_events': 'False', 'log_path': '/project/src/ili_utils/logs', 'cache_selected_only': 'False', 'debug': 'False', 'use_experimental_parser': 'False', 'fail_fast': 'False', 'write_json': 'True', 'indirect_selection': 'eager', 'target_path': 'None', 'invocation_command': 'dbt compile', 'profiles_dir': '/project/src/ili_utils', 'warn_error': 'None', 'no_print': 'None', 'log_format': 'default', 'printer_width': '80', 'static_parser': 'True', 'quiet': 'False', 'use_colors': 'True'}
+[0m07:15:57.811192 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'b1ebaebc-5447-4500-98a5-e2e512148b54', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7755019567d0>]}
+[0m07:15:57.859396 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'b1ebaebc-5447-4500-98a5-e2e512148b54', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x775504930a10>]}
+[0m07:15:57.860168 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m07:15:57.984047 [debug] [MainThread]: checksum: b80718358155fc17c3559352095564dd56ada1cc1a1c0ef2e62c857e71583775, vars: {}, profile: , target: , version: 1.11.7
+[0m07:15:57.984693 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m07:15:57.984995 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': 'b1ebaebc-5447-4500-98a5-e2e512148b54', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x775501520950>]}
+[0m07:15:58.813465 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'b1ebaebc-5447-4500-98a5-e2e512148b54', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7755011fe110>]}
+[0m07:15:58.847517 [debug] [MainThread]: Wrote artifact WritableManifest to /project/src/ili_utils/target/manifest.json
+[0m07:15:58.849279 [debug] [MainThread]: Wrote artifact SemanticManifest to /project/src/ili_utils/target/semantic_manifest.json
+[0m07:15:58.863110 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'b1ebaebc-5447-4500-98a5-e2e512148b54', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7755016b7ad0>]}
+[0m07:15:58.863571 [info ] [MainThread]: Found 590 macros
+[0m07:15:58.863851 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'b1ebaebc-5447-4500-98a5-e2e512148b54', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x775501934e90>]}
+[0m07:15:58.864934 [warn ] [MainThread]: Nothing to do. Try checking your model configs and model specification args
+[0m07:15:58.865433 [debug] [MainThread]: Command end result
+[0m07:15:58.888510 [debug] [MainThread]: Wrote artifact WritableManifest to /project/src/ili_utils/target/manifest.json
+[0m07:15:58.890730 [debug] [MainThread]: Wrote artifact SemanticManifest to /project/src/ili_utils/target/semantic_manifest.json
+[0m07:15:58.894343 [debug] [MainThread]: Wrote artifact RunExecutionResult to /project/src/ili_utils/target/run_results.json
+[0m07:15:58.895443 [debug] [MainThread]: Resource report: {"command_name": "compile", "command_success": true, "command_wall_clock_time": 1.2733575, "process_in_blocks": "392", "process_kernel_time": 0.340227, "process_mem_max_rss": "119316", "process_out_blocks": "3520", "process_user_time": 2.796647}
+[0m07:15:58.895986 [debug] [MainThread]: Command `dbt compile` succeeded at 07:15:58.895878 after 1.27 seconds
+[0m07:15:58.896403 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x775501c78550>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x775501c78bd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x775501561c10>]}
+[0m07:15:58.896808 [debug] [MainThread]: Flushing usage events
+[0m07:15:59.517243 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m07:16:28.192114 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7307d2c2a410>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7307d2c298d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7307d2b2ae90>]}
+
+
+============================== 07:16:28.197214 | 27d4bae6-98d0-43d8-b11e-4c617584e627 ==============================
+[0m07:16:28.197214 [info ] [MainThread]: Running with dbt=1.11.7
+[0m07:16:28.197672 [debug] [MainThread]: running dbt with arguments {'log_cache_events': 'False', 'profiles_dir': '/project/src/ili_utils', 'debug': 'False', 'send_anonymous_usage_stats': 'True', 'empty': 'None', 'introspect': 'True', 'warn_error': 'None', 'printer_width': '80', 'use_experimental_parser': 'False', 'log_path': '/project/src/ili_utils/logs', 'log_format': 'default', 'partial_parse': 'True', 'quiet': 'False', 'cache_selected_only': 'False', 'fail_fast': 'False', 'indirect_selection': 'eager', 'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'target_path': 'None', 'invocation_command': 'dbt ', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'use_colors': 'True', 'write_json': 'True'}
+[0m07:16:28.308073 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '27d4bae6-98d0-43d8-b11e-4c617584e627', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7307d2e81150>]}
+[0m07:16:28.329812 [debug] [MainThread]: Set downloads directory='/tmp/dbt-downloads-yi1sm9gg'
+[0m07:16:28.330215 [debug] [MainThread]: Making package index registry request: GET https://hub.getdbt.com/api/v1/index.json
+[0m07:16:28.453155 [debug] [MainThread]: Response from registry index: GET https://hub.getdbt.com/api/v1/index.json 200
+[0m07:16:28.454877 [debug] [MainThread]: Making package registry request: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json
+[0m07:16:28.577108 [debug] [MainThread]: Response from registry: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json 200
+[0m07:16:28.584508 [info ] [MainThread]: Installing dbt-labs/dbt_utils
+[0m07:16:29.266728 [info ] [MainThread]: Installed from version 1.3.3
+[0m07:16:29.267312 [info ] [MainThread]: Up to date!
+[0m07:16:29.268045 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'package', 'label': '27d4bae6-98d0-43d8-b11e-4c617584e627', 'property_': 'install', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7307d2a09250>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7307d2a300d0>]}
+[0m07:16:29.269831 [debug] [MainThread]: Resource report: {"command_name": "deps", "command_success": true, "command_wall_clock_time": 1.1253514, "process_in_blocks": "0", "process_kernel_time": 0.324685, "process_mem_max_rss": "113512", "process_out_blocks": "2296", "process_user_time": 1.883377}
+[0m07:16:29.270437 [debug] [MainThread]: Command `cli deps` succeeded at 07:16:29.270303 after 1.13 seconds
+[0m07:16:29.270870 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7307d2b64510>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7307d2e81210>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7307d2c31ad0>]}
+[0m07:16:29.271275 [debug] [MainThread]: Flushing usage events
+[0m07:16:29.824505 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m07:16:34.945377 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x751cef2c6790>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x751cef3c5e90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x751cef410d50>]}
+
+
+============================== 07:16:34.950708 | f0e2c734-c985-415c-805f-7d3305f940a9 ==============================
+[0m07:16:34.950708 [info ] [MainThread]: Running with dbt=1.11.7
+[0m07:16:34.951356 [debug] [MainThread]: running dbt with arguments {'partial_parse': 'True', 'warn_error': 'None', 'invocation_command': 'dbt clean', 'target_path': 'None', 'profiles_dir': '/project/src/ili_utils', 'use_colors': 'True', 'cache_selected_only': 'False', 'version_check': 'True', 'empty': 'None', 'no_print': 'None', 'fail_fast': 'False', 'send_anonymous_usage_stats': 'True', 'debug': 'False', 'quiet': 'False', 'write_json': 'True', 'log_cache_events': 'False', 'static_parser': 'True', 'use_experimental_parser': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_path': '/project/src/ili_utils/logs', 'log_format': 'default', 'introspect': 'True', 'printer_width': '80', 'indirect_selection': 'eager'}
+[0m07:16:35.059276 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'f0e2c734-c985-415c-805f-7d3305f940a9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x751cef6a7610>]}
+[0m07:16:35.080896 [debug] [MainThread]: Resource report: {"command_name": "clean", "command_success": true, "command_wall_clock_time": 0.17786552, "process_in_blocks": "16", "process_kernel_time": 0.313503, "process_mem_max_rss": "110992", "process_out_blocks": "8", "process_user_time": 2.018368}
+[0m07:16:35.081464 [debug] [MainThread]: Command `dbt clean` succeeded at 07:16:35.081343 after 0.18 seconds
+[0m07:16:35.081834 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x751cef3bae90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x751cef3b9310>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x751cf3f08690>]}
+[0m07:16:35.082154 [debug] [MainThread]: Flushing usage events
+[0m07:16:35.661385 [debug] [MainThread]: An error was encountered while trying to flush usage events

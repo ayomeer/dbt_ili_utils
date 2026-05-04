@@ -1,0 +1,12 @@
+package_dev:
+  target: dev
+  outputs:
+    dev:
+      dbname: test-db
+      host: postgis-container
+      pass: ppp
+      port: 5432
+      schema: dbt_default
+      threads: 1
+      type: postgres
+      user: postgres
