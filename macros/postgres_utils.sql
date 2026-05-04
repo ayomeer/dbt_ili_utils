@@ -14,7 +14,6 @@
     this,
     except=update_except_cols
   ) %}
-  {% set update_cols_str = update_cols | join(',\n  ') %}
 
   {% set insert_query %}
     INSERT INTO {{schema_name}}.{{table_name}}(
@@ -27,7 +26,7 @@
     FROM {{this}}
     ON CONFLICT ({{ conflict_target | join(', ') }}) DO UPDATE
     SET 
-      {% for col in cols -%}
+      {% for col in update_cols -%}
       {{ col }} = EXCLUDED.{{ col }}{% if not loop.last %},{% endif %}
       {% endfor %}
   {% endset %}
