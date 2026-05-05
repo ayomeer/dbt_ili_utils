@@ -16,18 +16,18 @@
   ) %}
 
   {% set insert_query %}
-    INSERT INTO {{schema_name}}.{{table_name}}(
+    INSERT INTO {{schema_name}}.{{table_name}} AS target(
       -- Get list of column names present in boundary model
       -- assumption: boundary model column names match target column names 
       {{ insert_cols_str }}
     ) 
     SELECT
       *
-    FROM {{this}} as incoming
+    FROM {{this}}
     ON CONFLICT ({{ conflict_target | join(', ') }}) DO UPDATE
     SET 
       {% for col in update_cols -%}
-      {{ col }} = COALESCE(EXCLUDED.{{ col }}, incoming.{{ col }}){% if not loop.last %},{% endif %}
+      {{ col }} = COALESCE(EXCLUDED.{{ col }}, target.{{ col }}){% if not loop.last %},{% endif %}
       {% endfor %}
   {% endset %}
   {% set query_return = run_query(insert_query)%}
