@@ -23,11 +23,11 @@
     ) 
     SELECT
       *
-    FROM {{this}}
+    FROM {{this}} as incoming
     ON CONFLICT ({{ conflict_target | join(', ') }}) DO UPDATE
     SET 
       {% for col in update_cols -%}
-      {{ col }} = COALESCE(EXCLUDED.{{ col }}, {{ col }}){% if not loop.last %},{% endif %}
+      {{ col }} = COALESCE(EXCLUDED.{{ col }}, incoming.{{ col }}){% if not loop.last %},{% endif %}
       {% endfor %}
   {% endset %}
   {% set query_return = run_query(insert_query)%}
