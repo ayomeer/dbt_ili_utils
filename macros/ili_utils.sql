@@ -145,7 +145,14 @@
 --- Transferring across boundary: dbt -> INTERLIS schema ----------------------
 
 -- Export dbt table to target table
-{% macro transfer_table(schema_name, table_name) %}
+{% macro insert_into(schema_name, table_name, truncate_target=false) %}
+
+  {% if truncate_target %}
+    {% set truncate_query %}
+      TRUNCATE TABLE {{schema_name}}.{{table_name}};
+    {% endset%}
+    {% set query_return = run_query(truncate_target)%}
+  {% endif %}
 
   {% set insert_query %}
     INSERT INTO {{schema_name}}.{{table_name}}(
@@ -173,7 +180,7 @@
         info=True
     )}}
 
-    -- reset dbt schema's t_ili2db_seq
+    -- (try to) reset dbt schema's t_ili2db_seq
     {{ ili_utils.reset_ili_sequence(target.schema) }}
 
     {% if var('enable_transfer', false) %}
