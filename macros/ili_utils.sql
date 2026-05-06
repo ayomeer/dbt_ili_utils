@@ -151,7 +151,7 @@
       " with truncate_target=" ~ truncate_target, 
       info=true
     )}}
-  {% if truncate_target == 'true' %}
+  {% if truncate_target %}
     {{ log(
       "Truncating " ~ schema_name ~ "." ~ table_name,
       info=true
@@ -159,7 +159,7 @@
     {% set truncate_query %}
       TRUNCATE TABLE {{schema_name}}.{{table_name}};
     {% endset%}
-    {% set query_return = run_query(truncate_target)%}
+    {% set query_return = run_query(truncate_query)%}
   {% endif %}
 
   {% set insert_query %}
