@@ -146,8 +146,16 @@
 
 -- Export dbt table to target table
 {% macro insert_into(schema_name, table_name, truncate_target=false) %}
-
-  {% if truncate_target == true %}
+  {{ log(
+      "Inserting into " schema_name ~ "." ~ table_name ~ 
+      " with truncate_target=" ~ truncate_target, 
+      info=true
+    )}}
+  {% if truncate_target == 'true' %}
+    {{ log(
+      "Truncating " schema_name ~ "." ~ table_name,
+      info=true
+    )}}
     {% set truncate_query %}
       TRUNCATE TABLE {{schema_name}}.{{table_name}};
     {% endset%}
