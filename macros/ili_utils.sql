@@ -164,16 +164,12 @@
 -- Export dbt table to target table
 {% macro insert_into(schema_name, table_name, truncate_target=false) %}
 
-  {{ log(
-      "Generating insert SQL for " ~ schema_name ~ "." ~ table_name ~ 
-      " truncate_target=" ~ truncate_target,
-      info=true
-  ) }}
+  {{ log("Generating insert SQL for post-hook", info=true) }}
 
-  {% set statements = [] %}
+  {% set sql_parts = [] %}
 
   {% if truncate_target %}
-    {% do statements.append(
+    {% do sql_parts.append(
       "TRUNCATE TABLE " ~ schema_name ~ "." ~ table_name ~ ";"
     ) %}
   {% endif %}
@@ -183,13 +179,13 @@
       {{ dbt_utils.get_filtered_columns_in_relation(this) | join(',\n  ') }}
     )
     SELECT
-      *
+      {{ dbt_utils.get_filtered_columns_in_relation(this) | join(',\n  ') }}
     FROM {{ this }}
   {% endset %}
 
-  {% do statements.append(insert_sql) %}
+  {% do sql_parts.append(insert_sql) %}
 
-  {{ return(statements) }}
+  {{ return(sql_parts | join(';\n')) }}
 
 {% endmacro %}
 
