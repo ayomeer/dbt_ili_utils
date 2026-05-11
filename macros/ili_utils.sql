@@ -156,6 +156,8 @@
     -- Populate basket table
     {{ ili_utils.setup_baskets(schema_name) }}
   {% endif %}
+
+  SELECT 1 -- temporary fix for "cannot execute empty sql query"
 {%- endmacro %}
 
 
