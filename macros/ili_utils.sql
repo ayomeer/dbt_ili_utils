@@ -190,6 +190,7 @@
         *
       FROM {{this}}
     {% endset %}
+    {{ log("Running query: \n" ~ insert_query, info=True) }}
     {% set query_return = run_query(insert_query)%}
   {% endif %}
 
