@@ -163,31 +163,37 @@
 
 -- Export dbt table to target table
 {% macro insert_into(schema_name, table_name, truncate_target=false) %}
+  {{ log(
+      "Inserting into " ~ schema_name ~ "." ~ table_name ~ 
+      " with truncate_target=" ~ truncate_target, 
+      info=true
+    )}}
+  {% if execute %}
+    {% if truncate_target %}
+      {{ log(
+        "Truncating " ~ schema_name ~ "." ~ table_name,
+        info=true
+      )}}
+      {% set truncate_query %}
+        TRUNCATE TABLE {{schema_name}}.{{table_name}};
+      {% endset%}
+      {% set query_return = run_query(truncate_query)%}
+    {% endif %}
 
-  {{ log("Generating insert SQL for post-hook", info=true) }}
-
-  {% set sql_parts = [] %}
-
-  {% if truncate_target %}
-    {% do sql_parts.append(
-      "TRUNCATE TABLE " ~ schema_name ~ "." ~ table_name ~ ";"
-    ) %}
+    {% set insert_query %}
+      INSERT INTO {{schema_name}}.{{table_name}}(
+        -- Get list of column names present in boundary model
+        -- assumption: boundary model column names match target column names 
+        {{ dbt_utils.get_filtered_columns_in_relation(this) | join(',\n  ') }}
+      )
+      SELECT
+        *
+      FROM {{this}}
+    {% endset %}
+    {% set query_return = run_query(insert_query)%}
   {% endif %}
 
-  {% set insert_sql %}
-    INSERT INTO {{ schema_name }}.{{ table_name }} (
-      {{ dbt_utils.get_filtered_columns_in_relation(this) | join(',\n  ') }}
-    )
-    SELECT
-      {{ dbt_utils.get_filtered_columns_in_relation(this) | join(',\n  ') }}
-    FROM {{ this }}
-  {% endset %}
-
-  {% do sql_parts.append(insert_sql) %}
-
-  {{ return(sql_parts | join(';\n')) }}
-
-{% endmacro %}
+{%- endmacro %}
 
 
 --- Parsing on dbt Triggers ---------------------------------------------------
