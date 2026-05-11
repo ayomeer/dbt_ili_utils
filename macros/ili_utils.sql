@@ -137,9 +137,8 @@
 
     -- Clear truncate tables
     {% set sql_truncate %}
-      TRUNCATE TABLE {{schema_name}}.t_ili2db_dataset CASCADE;
-      -- Truncates:
-      -- t_ili2db_dataset, t_ili2db_basket, any data objects
+      TRUNCATE TABLE {{schema_name}}.t_ili2db_dataset;
+      TRUNCATE TABLE {{schema_name}}.t_ili2db_basket;
     {% endset %}
     {% do run_query(sql_truncate) %}
 
