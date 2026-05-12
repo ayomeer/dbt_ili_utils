@@ -1,5 +1,0 @@
-packages:
-  - name: dbt_utils
-    package: dbt-labs/dbt_utils
-    version: 1.3.3
-sha1_hash: 8f2c3b9c619028da6dbb813a861434bc919f7d0d
