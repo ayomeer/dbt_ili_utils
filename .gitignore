@@ -1,2 +1,4 @@
 
-**/dbt_packages
+dbt_packages
+
+package*

@@ -1,0 +1,45 @@
+macros:
+  - name: create_ili_sequence
+    description: Create sequence schema_name.t_ili2db_seq.
+    arguments:
+    - name: schema_name
+      type: string
+      description: Name of the schema to create the sequence in.
+
+  - name: reset_ili_sequence
+    description: Restart sequence schema_name.t_ili2db_seq 
+    arguments:
+    - name: schema_name
+      type: string
+      description: Name of the schema to reset the sequence in.
+
+  - name: setup_roles_for_schema
+    description: Set up read and write roles for the schema.
+    arguments: []
+
+  - name: grant_select_on_all_tables
+    description: DEPRECATED!
+    arguments: []
+
+  - name: setup_baskets
+    description: Set up baskets on target schema according to corresponding variables.
+    arguments: []
+
+  - name: setup_datasets
+    description: Set up datasets on target schema according to corresponding variables.
+    arguments: []
+
+  - name: reset_target_schema
+    description: Reset target INTERLIS schema to state before first data write. Truncates data tables and sets up datasets and baskets again.
+    arguments: []
+
+  - name: insert_into
+    description: Insert data fram dbt mirror model into INTERLIS target table. Use the 'truncate_target' argument, to control whether or not to truncate the target table first.
+    arguments: []
+
+  - name: run_start_parsing
+    description: DEPRECATED!
+    arguments: []
+
+
+

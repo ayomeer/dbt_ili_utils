@@ -199,7 +199,7 @@
 
 
 --- Parsing on dbt Triggers ---------------------------------------------------
-{% macro run_start_parsing() %}
+{% macro run_start_parsing(target_ili_schema) %}
   {% if execute %}
 
     {{ log(
@@ -213,9 +213,7 @@
     {{ ili_utils.reset_ili_sequence(target.schema) }}
 
     {% if var('enable_transfer', false) %}
-      {% if var('reset_target', false) %}
-        {{ ili_utils.reset_target_schema(var('target_ili_schema')) }}
-      {% endif %}
+      {{ ili_utils.reset_target_schema(target_ili_schema) }}
     {% endif %}
 
   {% endif %}

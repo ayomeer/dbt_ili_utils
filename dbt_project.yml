@@ -15,3 +15,7 @@ macro-paths: ["macros"]
 clean-targets:         
   - "target"
   - "dbt_packages"
+
+
+flags:
+  validate_macro_args: true
