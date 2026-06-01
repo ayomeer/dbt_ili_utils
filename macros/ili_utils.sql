@@ -204,7 +204,6 @@
 
     {{ log(
         "Running ili_utils.run_start_parsing() macro \n"
-        ~ "reset_target: " ~ var('reset_target', false) ~ "\n"
         ~ "enable_transfer: " ~ var('enable_transfer', false),
         info=True
     )}}
@@ -214,9 +213,8 @@
 
     {% if var('enable_transfer', false) %}
       {{ ili_utils.reset_target_schema(target_ili_schema) }}
-    {% else %}
-      SELECT 1;
     {% endif %}
-
+  {% else %}
+    SELECT 1;
   {% endif %}
 {%- endmacro %}
