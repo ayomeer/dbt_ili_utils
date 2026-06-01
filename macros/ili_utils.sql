@@ -20,13 +20,13 @@
 {%- endmacro %}
 
 -- Reset 't_ili2db_seq' in target schema
-{% macro reset_ili_sequence(schema_name) -%}
+{% macro reset_ili_sequence(schema_name, starting_value=1) -%}
   
   {% if execute %}
-    {{ log("Restarting " ~ schema_name ~ ".t_ili2db_seq with 1", info=True) }}
+    {{ log("Restarting " ~ schema_name ~ ".t_ili2db_seq with {{starting_value}}", info=True) }}
 
     {% set sql_query %}
-      ALTER SEQUENCE {{schema_name}}.t_ili2db_seq RESTART WITH 1;
+      ALTER SEQUENCE {{schema_name}}.t_ili2db_seq RESTART WITH {{starting_value}};
     {% endset%}
     {% do run_query(sql_query) %}
   {% endif %}
@@ -200,8 +200,9 @@
 
 --- Parsing on dbt Triggers ---------------------------------------------------
 {% macro run_start_parsing(target_ili_schema) %}
-  {% if execute %}
+  SELECT 1;
 
+  {% if execute %}
     {{ log(
         "Running ili_utils.run_start_parsing() macro \n"
         ~ "enable_transfer: " ~ var('enable_transfer', false),
@@ -214,7 +215,5 @@
     {% if var('enable_transfer', false) %}
       {{ ili_utils.reset_target_schema(target_ili_schema) }}
     {% endif %}
-  {% else %}
-    SELECT 1;
   {% endif %}
 {%- endmacro %}
