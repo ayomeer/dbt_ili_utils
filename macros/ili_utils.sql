@@ -214,6 +214,8 @@
 
     {% if var('enable_transfer', false) %}
       {{ ili_utils.reset_target_schema(target_ili_schema) }}
+    {% else %}
+      SELECT 1;
     {% endif %}
 
   {% endif %}
