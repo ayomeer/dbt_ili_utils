@@ -139,14 +139,14 @@
   {% endif %}
 {%- endmacro %}
 
-{% macro reset_target_schema(schema_name) %}
+{% macro  (schema_name) %}
   {% if execute %}
     {{ ili_utils.reset_ili_sequence(schema_name) }}
 
     -- Clear truncate tables
     {% set sql_truncate %}
-      TRUNCATE TABLE {{schema_name}}.t_ili2db_dataset;
-      TRUNCATE TABLE {{schema_name}}.t_ili2db_basket;
+      TRUNCATE TABLE {{schema_name}}.t_ili2db_dataset CASCADE;
+      TRUNCATE TABLE {{schema_name}}.t_ili2db_basket CASCADE;
     {% endset %}
     {% do run_query(sql_truncate) %}
 
