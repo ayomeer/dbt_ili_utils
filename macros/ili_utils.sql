@@ -139,7 +139,7 @@
   {% endif %}
 {%- endmacro %}
 
-{% macro  (schema_name) %}
+{% macro (schema_name) %}
   {% if execute %}
     {{ ili_utils.reset_ili_sequence(schema_name) }}
 
