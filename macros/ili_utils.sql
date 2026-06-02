@@ -23,7 +23,7 @@
 {% macro reset_ili_sequence(schema_name, starting_value=1) -%}
   
   {% if execute %}
-    {{ log("Restarting " ~ schema_name ~ ".t_ili2db_seq with {{starting_value}}", info=True) }}
+    {{ log("Restarting " ~ schema_name ~ ".t_ili2db_seq with " ~ starting_value, info=True) }}
 
     {% set sql_query %}
       ALTER SEQUENCE {{schema_name}}.t_ili2db_seq RESTART WITH {{starting_value}};
@@ -215,5 +215,5 @@
     {% if var('enable_transfer', false) %}
       {{ ili_utils.reset_target_schema(target_ili_schema) }}
     {% endif %}
-  {% endif %}
+  {% endif %} -- endif execute
 {%- endmacro %}

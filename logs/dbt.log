@@ -2326,3 +2326,1012 @@ dbt_common.exceptions.connection.ConnectionError: External connection exception 
 [0m14:04:02.895570 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7758b8f5c9d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7758b8d735d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7758b92de110>]}
 [0m14:04:02.895911 [debug] [MainThread]: Flushing usage events
 [0m14:04:03.532837 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:22:49.016243 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f88f1a15e10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f88f1a15190>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f88f1a16010>]}
+
+
+============================== 16:22:49.022171 | 00fe3c82-6b54-48ca-a75e-7f454d44b6c4 ==============================
+[0m16:22:49.022171 [info ] [MainThread]: Running with dbt=1.11.7
+[0m16:22:49.022811 [debug] [MainThread]: running dbt with arguments {'no_print': 'None', 'profiles_dir': '/project/src/ili_utils', 'invocation_command': 'dbt docs generate', 'cache_selected_only': 'False', 'empty': 'None', 'printer_width': '80', 'version_check': 'True', 'log_cache_events': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'send_anonymous_usage_stats': 'True', 'partial_parse': 'True', 'indirect_selection': 'eager', 'static_parser': 'True', 'quiet': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'log_format': 'default', 'write_json': 'True', 'use_colors': 'True', 'debug': 'False', 'target_path': 'None', 'use_experimental_parser': 'False', 'introspect': 'True', 'log_path': '/project/src/ili_utils/logs'}
+[0m16:22:49.184183 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '00fe3c82-6b54-48ca-a75e-7f454d44b6c4', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f88f1691810>]}
+[0m16:22:49.260482 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '00fe3c82-6b54-48ca-a75e-7f454d44b6c4', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f88f493e190>]}
+[0m16:22:49.261675 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m16:22:49.445803 [debug] [MainThread]: checksum: b80718358155fc17c3559352095564dd56ada1cc1a1c0ef2e62c857e71583775, vars: {}, profile: , target: , version: 1.11.7
+[0m16:22:49.559523 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m16:22:49.560129 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m16:22:49.560543 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m16:22:49.582247 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '00fe3c82-6b54-48ca-a75e-7f454d44b6c4', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f88f1238fd0>]}
+[0m16:22:49.606218 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '00fe3c82-6b54-48ca-a75e-7f454d44b6c4', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f88f13926d0>]}
+[0m16:22:49.606825 [info ] [MainThread]: Found 1 analysis, 591 macros
+[0m16:22:49.607273 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '00fe3c82-6b54-48ca-a75e-7f454d44b6c4', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f88f1a0bc50>]}
+[0m16:22:49.608986 [info ] [MainThread]: 
+[0m16:22:49.609475 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m16:22:49.609783 [info ] [MainThread]: 
+[0m16:22:49.610351 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m16:22:49.732522 [debug] [MainThread]: Using postgres connection "master"
+[0m16:22:49.733072 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "package_dev", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m16:22:49.733435 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m16:22:49.743220 [debug] [MainThread]: Postgres adapter: Got a retryable error when attempting to open a postgres connection.
+1 attempts remaining. Retrying in 0 seconds.
+Error:
+connection to server at "postgis-container" (172.18.0.3), port 5432 failed: FATAL:  database "test-db" does not exist
+
+[0m16:22:49.753131 [debug] [MainThread]: Postgres adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "package_dev", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m16:22:49.753693 [debug] [MainThread]: Postgres adapter: Rolling back transaction.
+[0m16:22:49.754152 [debug] [MainThread]: Postgres adapter: Error running SQL: macro postgres__get_relations
+[0m16:22:49.754485 [debug] [MainThread]: Postgres adapter: Rolling back transaction.
+[0m16:22:49.754808 [debug] [MainThread]: On master: No close available on handle
+[0m16:22:49.755266 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m16:22:49.755819 [error] [MainThread]: Encountered an error:
+Database Error
+  connection to server at "postgis-container" (172.18.0.3), port 5432 failed: FATAL:  database "test-db" does not exist
+  
+[0m16:22:49.757023 [debug] [MainThread]: Resource report: {"command_name": "generate", "command_success": false, "command_wall_clock_time": 0.79361606, "process_in_blocks": "56", "process_kernel_time": 0.529019, "process_mem_max_rss": "124048", "process_out_blocks": "40", "process_user_time": 3.137252}
+[0m16:22:49.757659 [debug] [MainThread]: Command `dbt docs generate` failed at 16:22:49.757543 after 0.79 seconds
+[0m16:22:49.758085 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f88f13b5e10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f88f0ee0110>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f88f0ee0dd0>]}
+[0m16:22:49.758484 [debug] [MainThread]: Flushing usage events
+[0m16:22:50.590095 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:22:53.564844 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bc0ff905e10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bc0ff8dcb50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bc0ff90e1d0>]}
+
+
+============================== 16:22:53.570478 | 18aa06fe-f2b5-4cb8-8843-88374d0d07ad ==============================
+[0m16:22:53.570478 [info ] [MainThread]: Running with dbt=1.11.7
+[0m16:22:53.570966 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'fail_fast': 'False', 'log_cache_events': 'False', 'log_format': 'default', 'invocation_command': 'dbt ', 'empty': 'None', 'partial_parse': 'True', 'warn_error': 'None', 'cache_selected_only': 'False', 'send_anonymous_usage_stats': 'True', 'write_json': 'True', 'no_print': 'None', 'quiet': 'False', 'introspect': 'True', 'debug': 'False', 'use_experimental_parser': 'False', 'use_colors': 'True', 'indirect_selection': 'eager', 'profiles_dir': '/project/src/ili_utils', 'target_path': 'None', 'log_path': '/project/src/ili_utils/logs', 'printer_width': '80', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])'}
+[0m16:22:53.666717 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '18aa06fe-f2b5-4cb8-8843-88374d0d07ad', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bc0ff905590>]}
+[0m16:22:53.694840 [debug] [MainThread]: Set downloads directory='/tmp/dbt-downloads-_d6frr42'
+[0m16:22:53.695267 [debug] [MainThread]: Making package index registry request: GET https://hub.getdbt.com/api/v1/index.json
+[0m16:22:53.981981 [debug] [MainThread]: Response from registry index: GET https://hub.getdbt.com/api/v1/index.json 200
+[0m16:22:53.984482 [debug] [MainThread]: Making package registry request: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json
+[0m16:22:54.185935 [debug] [MainThread]: Response from registry: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json 200
+[0m16:22:54.191223 [info ] [MainThread]: Installing dbt-labs/dbt_utils
+[0m16:22:54.968813 [info ] [MainThread]: Installed from version 1.3.3
+[0m16:22:54.969246 [info ] [MainThread]: Up to date!
+[0m16:22:54.969678 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'package', 'label': '18aa06fe-f2b5-4cb8-8843-88374d0d07ad', 'property_': 'install', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bc0ff90e690>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bc0ffc35110>]}
+[0m16:22:54.971030 [debug] [MainThread]: Resource report: {"command_name": "deps", "command_success": true, "command_wall_clock_time": 1.4571667, "process_in_blocks": "632", "process_kernel_time": 0.325026, "process_mem_max_rss": "113356", "process_out_blocks": "2288", "process_user_time": 1.741784}
+[0m16:22:54.971501 [debug] [MainThread]: Command `cli deps` succeeded at 16:22:54.971419 after 1.46 seconds
+[0m16:22:54.971803 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bc0ff8a6290>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bc0ff8a6250>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bc0ff90da50>]}
+[0m16:22:54.972151 [debug] [MainThread]: Flushing usage events
+[0m16:22:55.496185 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:23:06.043992 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7dec61a41890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7dec61a43910>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7dec61a43dd0>]}
+
+
+============================== 16:23:06.049869 | 6996a15a-4630-4ca4-942a-58f153717e05 ==============================
+[0m16:23:06.049869 [info ] [MainThread]: Running with dbt=1.11.7
+[0m16:23:06.050393 [debug] [MainThread]: running dbt with arguments {'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'fail_fast': 'False', 'empty': 'None', 'log_path': '/project/src/ili_utils/logs', 'cache_selected_only': 'False', 'use_colors': 'True', 'write_json': 'True', 'indirect_selection': 'eager', 'static_parser': 'True', 'no_print': 'None', 'warn_error': 'None', 'log_cache_events': 'False', 'quiet': 'False', 'introspect': 'True', 'invocation_command': 'dbt docs generate', 'printer_width': '80', 'log_format': 'default', 'profiles_dir': '/project/src/ili_utils', 'version_check': 'True', 'target_path': 'None', 'debug': 'False', 'use_experimental_parser': 'False'}
+[0m16:23:06.184837 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '6996a15a-4630-4ca4-942a-58f153717e05', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7dec61b4d610>]}
+[0m16:23:06.233231 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '6996a15a-4630-4ca4-942a-58f153717e05', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7dec64a80410>]}
+[0m16:23:06.234091 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m16:23:06.399197 [debug] [MainThread]: checksum: b80718358155fc17c3559352095564dd56ada1cc1a1c0ef2e62c857e71583775, vars: {}, profile: , target: , version: 1.11.7
+[0m16:23:06.494576 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m16:23:06.494964 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m16:23:06.495198 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m16:23:06.510058 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '6996a15a-4630-4ca4-942a-58f153717e05', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7dec613a3010>]}
+[0m16:23:06.526265 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '6996a15a-4630-4ca4-942a-58f153717e05', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7dec614e7b50>]}
+[0m16:23:06.526734 [info ] [MainThread]: Found 1 analysis, 591 macros
+[0m16:23:06.527040 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '6996a15a-4630-4ca4-942a-58f153717e05', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7dec61524210>]}
+[0m16:23:06.528528 [info ] [MainThread]: 
+[0m16:23:06.528935 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m16:23:06.529259 [info ] [MainThread]: 
+[0m16:23:06.529830 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m16:23:06.639709 [debug] [MainThread]: Using postgres connection "master"
+[0m16:23:06.640170 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "package_dev", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m16:23:06.640484 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m16:23:06.671365 [debug] [MainThread]: SQL status: SELECT 94 in 0.031 seconds
+[0m16:23:06.678007 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '6996a15a-4630-4ca4-942a-58f153717e05', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7dec61a6e5d0>]}
+[0m16:23:06.678632 [debug] [MainThread]: On master: ROLLBACK
+[0m16:23:06.679324 [debug] [MainThread]: On master: Close
+[0m16:23:06.684647 [debug] [Thread-1 (]: Began running node analysis.ili_utils.test
+[0m16:23:06.685467 [debug] [Thread-1 (]: Acquiring new postgres connection 'analysis.ili_utils.test'
+[0m16:23:06.685753 [debug] [Thread-1 (]: Began compiling node analysis.ili_utils.test
+[0m16:23:06.695376 [info ] [Thread-1 (]: Running ili_utils.run_start_parsing() macro 
+enable_transfer: False
+[0m16:23:06.697998 [info ] [Thread-1 (]: Restarting dbt_default.t_ili2db_seq with {{starting_value}}
+[0m16:23:06.699997 [debug] [Thread-1 (]: Using postgres connection "analysis.ili_utils.test"
+[0m16:23:06.700353 [debug] [Thread-1 (]: On analysis.ili_utils.test: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "package_dev", "target_name": "dev", "node_id": "analysis.ili_utils.test"} */
+
+    
+      ALTER SEQUENCE dbt_default.t_ili2db_seq RESTART WITH 1;
+    
+  
+[0m16:23:06.700620 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m16:23:06.712801 [debug] [Thread-1 (]: Postgres adapter: Postgres error: schema "dbt_default" does not exist
+
+[0m16:23:06.714757 [debug] [Thread-1 (]: On analysis.ili_utils.test: Close
+[0m16:23:06.719282 [debug] [Thread-1 (]: Database Error in analysis test (analyses/test.sql)
+  schema "dbt_default" does not exist
+[0m16:23:06.719880 [debug] [Thread-1 (]: Finished running node analysis.ili_utils.test
+[0m16:23:06.720358 [debug] [Thread-4 (]: Marking all children of 'analysis.ili_utils.test' to be skipped because of status 'error'.  Reason: Database Error in analysis test (analyses/test.sql)
+  schema "dbt_default" does not exist.
+[0m16:23:06.721238 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m16:23:06.721819 [debug] [MainThread]: Connection 'analysis.ili_utils.test' was properly closed.
+[0m16:23:06.722483 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Database Error in analysis test (analyses/test.sql)
+    schema "dbt_default" does not exist
+[0m16:23:06.723671 [debug] [MainThread]: Resource report: {"command_name": "generate", "command_success": false, "command_wall_clock_time": 0.72210306, "process_in_blocks": "64", "process_kernel_time": 0.408974, "process_mem_max_rss": "125020", "process_out_blocks": "32", "process_user_time": 2.12866}
+[0m16:23:06.724543 [debug] [MainThread]: Command `dbt docs generate` failed at 16:23:06.724340 after 0.72 seconds
+[0m16:23:06.725157 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7dec61a438d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7dec61485b10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7dec61a9bf90>]}
+[0m16:23:06.725775 [debug] [MainThread]: Flushing usage events
+[0m16:23:07.375735 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:25:00.911580 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a57df77df10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a57df77fd90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a57df77ef50>]}
+
+
+============================== 16:25:00.916836 | 9ebaa068-aea4-49c5-8e3d-bf6e1a56a451 ==============================
+[0m16:25:00.916836 [info ] [MainThread]: Running with dbt=1.11.7
+[0m16:25:00.917368 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'use_colors': 'True', 'write_json': 'True', 'no_print': 'None', 'printer_width': '80', 'log_path': '/project/src/ili_utils/logs', 'debug': 'False', 'cache_selected_only': 'False', 'version_check': 'True', 'log_cache_events': 'False', 'fail_fast': 'False', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'empty': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'profiles_dir': '/project/src/ili_utils', 'target_path': 'None', 'send_anonymous_usage_stats': 'True', 'invocation_command': 'dbt docs generate', 'log_format': 'default', 'introspect': 'True', 'use_experimental_parser': 'False', 'indirect_selection': 'eager'}
+[0m16:25:01.055437 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '9ebaa068-aea4-49c5-8e3d-bf6e1a56a451', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a57df4c71d0>]}
+[0m16:25:01.105705 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '9ebaa068-aea4-49c5-8e3d-bf6e1a56a451', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a57e2858210>]}
+[0m16:25:01.106517 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m16:25:01.232576 [debug] [MainThread]: checksum: b80718358155fc17c3559352095564dd56ada1cc1a1c0ef2e62c857e71583775, vars: {}, profile: , target: , version: 1.11.7
+[0m16:25:01.306769 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m16:25:01.307175 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m16:25:01.307416 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m16:25:01.322328 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '9ebaa068-aea4-49c5-8e3d-bf6e1a56a451', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a57df0ff150>]}
+[0m16:25:01.338217 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '9ebaa068-aea4-49c5-8e3d-bf6e1a56a451', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a57df2472d0>]}
+[0m16:25:01.338689 [info ] [MainThread]: Found 1 analysis, 591 macros
+[0m16:25:01.338987 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '9ebaa068-aea4-49c5-8e3d-bf6e1a56a451', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a57e2a16d50>]}
+[0m16:25:01.340401 [info ] [MainThread]: 
+[0m16:25:01.340761 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m16:25:01.341042 [info ] [MainThread]: 
+[0m16:25:01.341492 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m16:25:01.440536 [debug] [MainThread]: Using postgres connection "master"
+[0m16:25:01.441019 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "package_dev", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m16:25:01.441328 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m16:25:01.469499 [debug] [MainThread]: SQL status: SELECT 94 in 0.028 seconds
+[0m16:25:01.476466 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '9ebaa068-aea4-49c5-8e3d-bf6e1a56a451', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a57dfee44d0>]}
+[0m16:25:01.476988 [debug] [MainThread]: On master: ROLLBACK
+[0m16:25:01.477475 [debug] [MainThread]: On master: Close
+[0m16:25:01.481587 [debug] [Thread-1 (]: Began running node analysis.ili_utils.test
+[0m16:25:01.482556 [debug] [Thread-1 (]: Acquiring new postgres connection 'analysis.ili_utils.test'
+[0m16:25:01.482849 [debug] [Thread-1 (]: Began compiling node analysis.ili_utils.test
+[0m16:25:01.491845 [info ] [Thread-1 (]: Running ili_utils.run_start_parsing() macro 
+enable_transfer: False
+[0m16:25:01.494024 [info ] [Thread-1 (]: Restarting dbt_arten.t_ili2db_seq with {{starting_value}}
+[0m16:25:01.496023 [debug] [Thread-1 (]: Using postgres connection "analysis.ili_utils.test"
+[0m16:25:01.496394 [debug] [Thread-1 (]: On analysis.ili_utils.test: /* {"app": "dbt", "dbt_version": "1.11.7", "profile_name": "package_dev", "target_name": "dev", "node_id": "analysis.ili_utils.test"} */
+
+    
+      ALTER SEQUENCE dbt_arten.t_ili2db_seq RESTART WITH 1;
+    
+  
+[0m16:25:01.496665 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m16:25:01.508434 [debug] [Thread-1 (]: Postgres adapter: Postgres error: relation "dbt_arten.t_ili2db_seq" does not exist
+
+[0m16:25:01.510526 [debug] [Thread-1 (]: On analysis.ili_utils.test: Close
+[0m16:25:01.516541 [debug] [Thread-1 (]: Database Error in analysis test (analyses/test.sql)
+  relation "dbt_arten.t_ili2db_seq" does not exist
+[0m16:25:01.517568 [debug] [Thread-1 (]: Finished running node analysis.ili_utils.test
+[0m16:25:01.518500 [debug] [Thread-4 (]: Marking all children of 'analysis.ili_utils.test' to be skipped because of status 'error'.  Reason: Database Error in analysis test (analyses/test.sql)
+  relation "dbt_arten.t_ili2db_seq" does not exist.
+[0m16:25:01.520023 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m16:25:01.520542 [debug] [MainThread]: Connection 'analysis.ili_utils.test' was properly closed.
+[0m16:25:01.521304 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Database Error in analysis test (analyses/test.sql)
+    relation "dbt_arten.t_ili2db_seq" does not exist
+[0m16:25:01.522590 [debug] [MainThread]: Resource report: {"command_name": "generate", "command_success": false, "command_wall_clock_time": 0.6546595, "process_in_blocks": "0", "process_kernel_time": 0.363786, "process_mem_max_rss": "124884", "process_out_blocks": "40", "process_user_time": 2.124912}
+[0m16:25:01.523188 [debug] [MainThread]: Command `dbt docs generate` failed at 16:25:01.523094 after 0.66 seconds
+[0m16:25:01.523544 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a57ded73650>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a57df26bf10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a57df7d7250>]}
+[0m16:25:01.523960 [debug] [MainThread]: Flushing usage events
+[0m16:25:02.375170 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:25:19.851401 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x722c8227e490>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x722c8227e8d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x722c8227edd0>]}
+
+
+============================== 16:25:19.856790 | 354c48fd-8c86-4599-a0ea-e1db8e767821 ==============================
+[0m16:25:19.856790 [info ] [MainThread]: Running with dbt=1.11.7
+[0m16:25:19.857246 [debug] [MainThread]: running dbt with arguments {'warn_error': 'None', 'version_check': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'partial_parse': 'True', 'no_print': 'None', 'quiet': 'False', 'invocation_command': 'dbt docs generate', 'use_experimental_parser': 'False', 'write_json': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'printer_width': '80', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'profiles_dir': '/project/src/ili_utils', 'indirect_selection': 'eager', 'use_colors': 'True', 'log_path': '/project/src/ili_utils/logs', 'log_format': 'default', 'debug': 'False', 'send_anonymous_usage_stats': 'True', 'target_path': 'None'}
+[0m16:25:20.005887 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '354c48fd-8c86-4599-a0ea-e1db8e767821', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x722c82062c10>]}
+[0m16:25:20.056260 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '354c48fd-8c86-4599-a0ea-e1db8e767821', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x722c85368790>]}
+[0m16:25:20.057032 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m16:25:20.183020 [debug] [MainThread]: checksum: b80718358155fc17c3559352095564dd56ada1cc1a1c0ef2e62c857e71583775, vars: {}, profile: , target: , version: 1.11.7
+[0m16:25:20.256627 [debug] [MainThread]: Partial parsing enabled: 1 files deleted, 0 files added, 0 files changed.
+[0m16:25:20.257058 [debug] [MainThread]: Partial parsing: deleted file: ili_utils://analyses/test.sql
+[0m16:25:20.293396 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '354c48fd-8c86-4599-a0ea-e1db8e767821', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x722c822d54d0>]}
+[0m16:25:20.308033 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '354c48fd-8c86-4599-a0ea-e1db8e767821', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x722c81cfbdd0>]}
+[0m16:25:20.308509 [info ] [MainThread]: Found 591 macros
+[0m16:25:20.308809 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '354c48fd-8c86-4599-a0ea-e1db8e767821', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x722c8234a550>]}
+[0m16:25:20.310055 [warn ] [MainThread]: Nothing to do. Try checking your model configs and model specification args
+[0m16:25:20.311777 [debug] [MainThread]: Command end result
+[0m16:25:20.419488 [debug] [MainThread]: Wrote artifact WritableManifest to /project/src/ili_utils/target/manifest.json
+[0m16:25:20.422034 [debug] [MainThread]: Wrote artifact SemanticManifest to /project/src/ili_utils/target/semantic_manifest.json
+[0m16:25:20.425336 [debug] [MainThread]: Wrote artifact RunExecutionResult to /project/src/ili_utils/target/run_results.json
+[0m16:25:20.429176 [debug] [MainThread]: Acquiring new postgres connection 'generate_catalog'
+[0m16:25:20.429550 [info ] [MainThread]: Building catalog
+[0m16:25:20.466629 [debug] [MainThread]: Wrote artifact CatalogArtifact to /project/src/ili_utils/target/catalog.json
+[0m16:25:20.495107 [debug] [MainThread]: Wrote artifact WritableManifest to /project/src/ili_utils/target/manifest.json
+[0m16:25:20.497373 [debug] [MainThread]: Wrote artifact SemanticManifest to /project/src/ili_utils/target/semantic_manifest.json
+[0m16:25:20.497794 [info ] [MainThread]: Catalog written to /project/src/ili_utils/target/catalog.json
+[0m16:25:20.498900 [debug] [MainThread]: Resource report: {"command_name": "generate", "command_success": true, "command_wall_clock_time": 0.6902406, "process_in_blocks": "3344", "process_kernel_time": 0.378172, "process_mem_max_rss": "123704", "process_out_blocks": "7200", "process_user_time": 2.180229}
+[0m16:25:20.499569 [debug] [MainThread]: Command `dbt docs generate` succeeded at 16:25:20.499454 after 0.69 seconds
+[0m16:25:20.499946 [debug] [MainThread]: Connection 'generate_catalog' was properly closed.
+[0m16:25:20.500289 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x722c8227fd10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x722c81cb0310>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x722c825ec1d0>]}
+[0m16:25:20.500676 [debug] [MainThread]: Flushing usage events
+[0m16:25:21.113409 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:25:31.947204 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78a1a367f010>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78a1a39f85d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78a1a36ca8d0>]}
+
+
+============================== 16:25:31.952358 | 691c48df-db24-42a8-9775-cccc3cbf6f75 ==============================
+[0m16:25:31.952358 [info ] [MainThread]: Running with dbt=1.11.7
+[0m16:25:31.952795 [debug] [MainThread]: running dbt with arguments {'debug': 'False', 'invocation_command': 'dbt docs generate', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_format': 'default', 'send_anonymous_usage_stats': 'True', 'partial_parse': 'True', 'fail_fast': 'False', 'warn_error': 'None', 'empty': 'None', 'write_json': 'True', 'quiet': 'False', 'introspect': 'True', 'profiles_dir': '/project/src/ili_utils', 'use_experimental_parser': 'False', 'cache_selected_only': 'False', 'log_cache_events': 'False', 'static_parser': 'True', 'use_colors': 'True', 'target_path': 'None', 'printer_width': '80', 'no_print': 'None', 'version_check': 'True', 'indirect_selection': 'eager', 'log_path': '/project/src/ili_utils/logs'}
+[0m16:25:32.090724 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '691c48df-db24-42a8-9775-cccc3cbf6f75', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78a1a36a9210>]}
+[0m16:25:32.139893 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '691c48df-db24-42a8-9775-cccc3cbf6f75', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78a1a67548d0>]}
+[0m16:25:32.140656 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m16:25:32.261283 [debug] [MainThread]: checksum: b80718358155fc17c3559352095564dd56ada1cc1a1c0ef2e62c857e71583775, vars: {}, profile: , target: , version: 1.11.7
+[0m16:25:32.321994 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m16:25:32.322368 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m16:25:32.322590 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m16:25:32.327049 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '691c48df-db24-42a8-9775-cccc3cbf6f75', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78a1a2ff6610>]}
+[0m16:25:32.341633 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '691c48df-db24-42a8-9775-cccc3cbf6f75', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78a1a3143910>]}
+[0m16:25:32.342078 [info ] [MainThread]: Found 591 macros
+[0m16:25:32.342345 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '691c48df-db24-42a8-9775-cccc3cbf6f75', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78a1a3154490>]}
+[0m16:25:32.343494 [warn ] [MainThread]: Nothing to do. Try checking your model configs and model specification args
+[0m16:25:32.345049 [debug] [MainThread]: Command end result
+[0m16:25:32.470306 [debug] [MainThread]: Wrote artifact WritableManifest to /project/src/ili_utils/target/manifest.json
+[0m16:25:32.472644 [debug] [MainThread]: Wrote artifact SemanticManifest to /project/src/ili_utils/target/semantic_manifest.json
+[0m16:25:32.476286 [debug] [MainThread]: Wrote artifact RunExecutionResult to /project/src/ili_utils/target/run_results.json
+[0m16:25:32.480414 [debug] [MainThread]: Acquiring new postgres connection 'generate_catalog'
+[0m16:25:32.480836 [info ] [MainThread]: Building catalog
+[0m16:25:32.520543 [debug] [MainThread]: Wrote artifact CatalogArtifact to /project/src/ili_utils/target/catalog.json
+[0m16:25:32.553549 [debug] [MainThread]: Wrote artifact WritableManifest to /project/src/ili_utils/target/manifest.json
+[0m16:25:32.556540 [debug] [MainThread]: Wrote artifact SemanticManifest to /project/src/ili_utils/target/semantic_manifest.json
+[0m16:25:32.557152 [info ] [MainThread]: Catalog written to /project/src/ili_utils/target/catalog.json
+[0m16:25:32.558728 [debug] [MainThread]: Resource report: {"command_name": "generate", "command_success": true, "command_wall_clock_time": 0.6548485, "process_in_blocks": "0", "process_kernel_time": 0.369951, "process_mem_max_rss": "123616", "process_out_blocks": "5952", "process_user_time": 2.106028}
+[0m16:25:32.559660 [debug] [MainThread]: Command `dbt docs generate` succeeded at 16:25:32.559436 after 0.66 seconds
+[0m16:25:32.560267 [debug] [MainThread]: Connection 'generate_catalog' was properly closed.
+[0m16:25:32.560902 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78a1a3671e90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78a1a3167ed0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78a1a3670c50>]}
+[0m16:25:32.561632 [debug] [MainThread]: Flushing usage events
+[0m16:25:33.509196 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:25:38.142486 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b155e032150>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b155e031dd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b155e9c3990>]}
+
+
+============================== 16:25:38.147608 | 7b837ab2-8968-4a7a-9043-b57b27f2aa9f ==============================
+[0m16:25:38.147608 [info ] [MainThread]: Running with dbt=1.11.7
+[0m16:25:38.148118 [debug] [MainThread]: running dbt with arguments {'indirect_selection': 'eager', 'warn_error': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'use_experimental_parser': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'no_print': 'None', 'printer_width': '80', 'invocation_command': 'dbt docs serve', 'static_parser': 'True', 'version_check': 'True', 'debug': 'False', 'empty': 'None', 'log_path': '/project/src/ili_utils/logs', 'send_anonymous_usage_stats': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'quiet': 'False', 'log_format': 'default', 'target_path': 'None', 'profiles_dir': '/project/src/ili_utils', 'use_colors': 'True', 'write_json': 'True', 'cache_selected_only': 'False'}
+[0m16:25:38.284992 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '7b837ab2-8968-4a7a-9043-b57b27f2aa9f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b155dc6b290>]}
+[0m16:25:38.333781 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '7b837ab2-8968-4a7a-9043-b57b27f2aa9f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b156101ea50>]}
+[0m16:26:57.783498 [error] [MainThread]: Encountered an error:
+
+[0m16:26:57.788803 [error] [MainThread]: Traceback (most recent call last):
+  File "/home/user/.local/lib/python3.11/site-packages/dbt/cli/requires.py", line 182, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/dbt/cli/requires.py", line 128, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/dbt/cli/requires.py", line 276, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/dbt/cli/requires.py", line 321, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/dbt/cli/requires.py", line 368, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/dbt/cli/main.py", line 307, in docs_serve
+    results = task.run()
+              ^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/dbt/task/docs/serve.py", line 29, in run
+    httpd.serve_forever()
+  File "/usr/local/lib/python3.11/socketserver.py", line 233, in serve_forever
+    ready = selector.select(poll_interval)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+
+[0m16:26:57.790202 [debug] [MainThread]: Resource report: {"command_name": "serve", "command_success": false, "command_wall_clock_time": 79.69125, "process_in_blocks": "232", "process_kernel_time": 0.295636, "process_mem_max_rss": "115936", "process_out_blocks": "3368", "process_user_time": 1.82276}
+[0m16:26:57.790877 [debug] [MainThread]: Command `dbt docs serve` failed at 16:26:57.790762 after 79.69 seconds
+[0m16:26:57.791284 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b155df28d90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b155df28a90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b155dbacf50>]}
+[0m16:26:57.791906 [debug] [MainThread]: Flushing usage events
+[0m16:26:58.401426 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m06:48:25.405745 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78c4f53f9090>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78c4f571f990>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78c4f5401fd0>]}
+
+
+============================== 06:48:25.410740 | bbc23e30-1ecd-40a8-929e-de6c4922a560 ==============================
+[0m06:48:25.410740 [info ] [MainThread]: Running with dbt=1.11.7
+[0m06:48:25.411286 [debug] [MainThread]: running dbt with arguments {'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'write_json': 'True', 'empty': 'None', 'printer_width': '80', 'debug': 'False', 'cache_selected_only': 'False', 'log_format': 'default', 'target_path': 'None', 'warn_error': 'None', 'introspect': 'True', 'log_cache_events': 'False', 'log_path': '/project/src/ili_utils/logs', 'static_parser': 'True', 'invocation_command': 'dbt ', 'version_check': 'True', 'send_anonymous_usage_stats': 'True', 'use_colors': 'True', 'fail_fast': 'False', 'partial_parse': 'True', 'use_experimental_parser': 'False', 'indirect_selection': 'eager', 'profiles_dir': '/project/src/ili_utils'}
+[0m06:48:25.508903 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'bbc23e30-1ecd-40a8-929e-de6c4922a560', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78c4f533ca10>]}
+[0m06:48:25.533913 [debug] [MainThread]: Set downloads directory='/tmp/dbt-downloads-h8hk_k21'
+[0m06:48:25.534312 [debug] [MainThread]: Making package index registry request: GET https://hub.getdbt.com/api/v1/index.json
+[0m06:48:25.819487 [debug] [MainThread]: External call exception: HTTPSConnectionPool(host='hub.getdbt.com', port=443): Max retries exceeded with url: /api/v1/index.json (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)')))
+[0m06:48:25.819996 [debug] [MainThread]: Retrying external call. Attempt: 0 Max attempts: 5
+[0m06:48:26.820484 [debug] [MainThread]: Making package index registry request: GET https://hub.getdbt.com/api/v1/index.json
+[0m06:48:26.844267 [debug] [MainThread]: External call exception: HTTPSConnectionPool(host='hub.getdbt.com', port=443): Max retries exceeded with url: /api/v1/index.json (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)')))
+[0m06:48:26.844700 [debug] [MainThread]: Retrying external call. Attempt: 1 Max attempts: 5
+[0m06:48:27.845350 [debug] [MainThread]: Making package index registry request: GET https://hub.getdbt.com/api/v1/index.json
+[0m06:48:27.863752 [debug] [MainThread]: External call exception: HTTPSConnectionPool(host='hub.getdbt.com', port=443): Max retries exceeded with url: /api/v1/index.json (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)')))
+[0m06:48:27.864140 [debug] [MainThread]: Retrying external call. Attempt: 2 Max attempts: 5
+[0m06:48:28.864602 [debug] [MainThread]: Making package index registry request: GET https://hub.getdbt.com/api/v1/index.json
+[0m06:48:28.886506 [debug] [MainThread]: External call exception: HTTPSConnectionPool(host='hub.getdbt.com', port=443): Max retries exceeded with url: /api/v1/index.json (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)')))
+[0m06:48:28.886893 [debug] [MainThread]: Retrying external call. Attempt: 3 Max attempts: 5
+[0m06:48:29.887367 [debug] [MainThread]: Making package index registry request: GET https://hub.getdbt.com/api/v1/index.json
+[0m06:48:29.908770 [debug] [MainThread]: External call exception: HTTPSConnectionPool(host='hub.getdbt.com', port=443): Max retries exceeded with url: /api/v1/index.json (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)')))
+[0m06:48:29.909176 [debug] [MainThread]: Retrying external call. Attempt: 4 Max attempts: 5
+[0m06:48:30.910092 [debug] [MainThread]: Making package index registry request: GET https://hub.getdbt.com/api/v1/index.json
+[0m06:48:31.006745 [error] [MainThread]: Encountered an error:
+External connection exception occurred: HTTPSConnectionPool(host='hub.getdbt.com', port=443): Max retries exceeded with url: /api/v1/index.json (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)')))
+[0m06:48:31.026982 [error] [MainThread]: Traceback (most recent call last):
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connection.py", line 796, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connection.py", line 975, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+               ^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/util/ssl_.py", line 483, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/util/ssl_.py", line 527, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/ssl.py", line 517, in wrap_socket
+    return self.sslsocket_class._create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/ssl.py", line 1104, in _create
+    self.do_handshake()
+  File "/usr/local/lib/python3.11/ssl.py", line 1382, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+urllib3.exceptions.SSLError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/user/.local/lib/python3.11/site-packages/requests/adapters.py", line 645, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/util/retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='hub.getdbt.com', port=443): Max retries exceeded with url: /api/v1/index.json (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/.local/lib/python3.11/site-packages/dbt_common/utils/connection.py", line 22, in connection_exception_retry
+    return fn()
+           ^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/dbt/clients/registry.py", line 168, in _get_index
+    resp = requests.get(url, timeout=30)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/requests/sessions.py", line 592, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/requests/sessions.py", line 706, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/requests/adapters.py", line 676, in send
+    raise SSLError(e, request=request)
+requests.exceptions.SSLError: HTTPSConnectionPool(host='hub.getdbt.com', port=443): Max retries exceeded with url: /api/v1/index.json (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connection.py", line 796, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connection.py", line 975, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+               ^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/util/ssl_.py", line 483, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/util/ssl_.py", line 527, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/ssl.py", line 517, in wrap_socket
+    return self.sslsocket_class._create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/ssl.py", line 1104, in _create
+    self.do_handshake()
+  File "/usr/local/lib/python3.11/ssl.py", line 1382, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+urllib3.exceptions.SSLError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/user/.local/lib/python3.11/site-packages/requests/adapters.py", line 645, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/util/retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='hub.getdbt.com', port=443): Max retries exceeded with url: /api/v1/index.json (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/.local/lib/python3.11/site-packages/dbt_common/utils/connection.py", line 22, in connection_exception_retry
+    return fn()
+           ^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/dbt/clients/registry.py", line 168, in _get_index
+    resp = requests.get(url, timeout=30)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/requests/sessions.py", line 592, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/requests/sessions.py", line 706, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/requests/adapters.py", line 676, in send
+    raise SSLError(e, request=request)
+requests.exceptions.SSLError: HTTPSConnectionPool(host='hub.getdbt.com', port=443): Max retries exceeded with url: /api/v1/index.json (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connection.py", line 796, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connection.py", line 975, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+               ^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/util/ssl_.py", line 483, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/util/ssl_.py", line 527, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/ssl.py", line 517, in wrap_socket
+    return self.sslsocket_class._create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/ssl.py", line 1104, in _create
+    self.do_handshake()
+  File "/usr/local/lib/python3.11/ssl.py", line 1382, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+urllib3.exceptions.SSLError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/user/.local/lib/python3.11/site-packages/requests/adapters.py", line 645, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/util/retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='hub.getdbt.com', port=443): Max retries exceeded with url: /api/v1/index.json (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/.local/lib/python3.11/site-packages/dbt_common/utils/connection.py", line 22, in connection_exception_retry
+    return fn()
+           ^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/dbt/clients/registry.py", line 168, in _get_index
+    resp = requests.get(url, timeout=30)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/requests/sessions.py", line 592, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/requests/sessions.py", line 706, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/requests/adapters.py", line 676, in send
+    raise SSLError(e, request=request)
+requests.exceptions.SSLError: HTTPSConnectionPool(host='hub.getdbt.com', port=443): Max retries exceeded with url: /api/v1/index.json (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connection.py", line 796, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connection.py", line 975, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+               ^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/util/ssl_.py", line 483, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/util/ssl_.py", line 527, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/ssl.py", line 517, in wrap_socket
+    return self.sslsocket_class._create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/ssl.py", line 1104, in _create
+    self.do_handshake()
+  File "/usr/local/lib/python3.11/ssl.py", line 1382, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+urllib3.exceptions.SSLError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/user/.local/lib/python3.11/site-packages/requests/adapters.py", line 645, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/util/retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='hub.getdbt.com', port=443): Max retries exceeded with url: /api/v1/index.json (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/.local/lib/python3.11/site-packages/dbt_common/utils/connection.py", line 22, in connection_exception_retry
+    return fn()
+           ^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/dbt/clients/registry.py", line 168, in _get_index
+    resp = requests.get(url, timeout=30)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/requests/sessions.py", line 592, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/requests/sessions.py", line 706, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/requests/adapters.py", line 676, in send
+    raise SSLError(e, request=request)
+requests.exceptions.SSLError: HTTPSConnectionPool(host='hub.getdbt.com', port=443): Max retries exceeded with url: /api/v1/index.json (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connection.py", line 796, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connection.py", line 975, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+               ^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/util/ssl_.py", line 483, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/util/ssl_.py", line 527, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/ssl.py", line 517, in wrap_socket
+    return self.sslsocket_class._create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/ssl.py", line 1104, in _create
+    self.do_handshake()
+  File "/usr/local/lib/python3.11/ssl.py", line 1382, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+urllib3.exceptions.SSLError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/user/.local/lib/python3.11/site-packages/requests/adapters.py", line 645, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/util/retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='hub.getdbt.com', port=443): Max retries exceeded with url: /api/v1/index.json (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/.local/lib/python3.11/site-packages/dbt_common/utils/connection.py", line 22, in connection_exception_retry
+    return fn()
+           ^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/dbt/clients/registry.py", line 168, in _get_index
+    resp = requests.get(url, timeout=30)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/requests/sessions.py", line 592, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/requests/sessions.py", line 706, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/requests/adapters.py", line 676, in send
+    raise SSLError(e, request=request)
+requests.exceptions.SSLError: HTTPSConnectionPool(host='hub.getdbt.com', port=443): Max retries exceeded with url: /api/v1/index.json (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connection.py", line 796, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connection.py", line 975, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+               ^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/util/ssl_.py", line 483, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/util/ssl_.py", line 527, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/ssl.py", line 517, in wrap_socket
+    return self.sslsocket_class._create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/ssl.py", line 1104, in _create
+    self.do_handshake()
+  File "/usr/local/lib/python3.11/ssl.py", line 1382, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+urllib3.exceptions.SSLError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/user/.local/lib/python3.11/site-packages/requests/adapters.py", line 645, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/urllib3/util/retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='hub.getdbt.com', port=443): Max retries exceeded with url: /api/v1/index.json (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/.local/lib/python3.11/site-packages/dbt_common/utils/connection.py", line 22, in connection_exception_retry
+    return fn()
+           ^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/dbt/clients/registry.py", line 168, in _get_index
+    resp = requests.get(url, timeout=30)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/requests/sessions.py", line 592, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/requests/sessions.py", line 706, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/requests/adapters.py", line 676, in send
+    raise SSLError(e, request=request)
+requests.exceptions.SSLError: HTTPSConnectionPool(host='hub.getdbt.com', port=443): Max retries exceeded with url: /api/v1/index.json (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/.local/lib/python3.11/site-packages/dbt/cli/requires.py", line 182, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/dbt/cli/requires.py", line 128, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/dbt/cli/requires.py", line 258, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/dbt/cli/requires.py", line 321, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/dbt/cli/main.py", line 461, in deps
+    results = task.run()
+              ^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/dbt/task/deps.py", line 321, in run
+    lock_defined_deps = resolve_lock_packages(packages_lock_config)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/dbt/deps/resolver.py", line 147, in resolve_lock_packages
+    resolved = final.resolved()
+               ^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/dbt/deps/resolver.py", line 95, in resolved
+    return [p.resolved() for p in self.packages.values()]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/dbt/deps/resolver.py", line 95, in <listcomp>
+    return [p.resolved() for p in self.packages.values()]
+            ^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/dbt/deps/registry.py", line 98, in resolved
+    self._check_in_index()
+  File "/home/user/.local/lib/python3.11/site-packages/dbt/deps/registry.py", line 75, in _check_in_index
+    index = registry.index_cached()
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/dbt/utils/utils.py", line 127, in __call__
+    value = self.func(*args)
+            ^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/dbt/clients/registry.py", line 189, in index
+    return connection_exception_retry(get_index_fn, 5)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/dbt_common/utils/connection.py", line 36, in connection_exception_retry
+    return connection_exception_retry(fn, max_attempts, attempt + 1)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/dbt_common/utils/connection.py", line 36, in connection_exception_retry
+    return connection_exception_retry(fn, max_attempts, attempt + 1)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/.local/lib/python3.11/site-packages/dbt_common/utils/connection.py", line 36, in connection_exception_retry
+    return connection_exception_retry(fn, max_attempts, attempt + 1)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  [Previous line repeated 2 more times]
+  File "/home/user/.local/lib/python3.11/site-packages/dbt_common/utils/connection.py", line 38, in connection_exception_retry
+    raise ConnectionError("External connection exception occurred: " + str(exc))
+dbt_common.exceptions.connection.ConnectionError: External connection exception occurred: HTTPSConnectionPool(host='hub.getdbt.com', port=443): Max retries exceeded with url: /api/v1/index.json (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)')))
+
+[0m06:48:31.029798 [debug] [MainThread]: Resource report: {"command_name": "deps", "command_success": false, "command_wall_clock_time": 5.6696196, "process_in_blocks": "3760", "process_kernel_time": 0.28666, "process_mem_max_rss": "117160", "process_out_blocks": "88", "process_user_time": 1.721961}
+[0m06:48:31.030264 [debug] [MainThread]: Command `cli deps` failed at 06:48:31.030184 after 5.67 seconds
+[0m06:48:31.030571 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78c4f53fb3d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78c4f50f6890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78c4f53f9110>]}
+[0m06:48:31.030965 [debug] [MainThread]: Flushing usage events
+[0m06:48:31.137378 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m09:00:13.531220 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x703b9af33ed0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x703b9af3a850>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x703b9af3a5d0>]}
+
+
+============================== 09:00:13.536321 | b7e19bcd-4697-4e50-a72d-6393bbe90f04 ==============================
+[0m09:00:13.536321 [info ] [MainThread]: Running with dbt=1.11.7
+[0m09:00:13.536953 [debug] [MainThread]: running dbt with arguments {'log_cache_events': 'False', 'log_path': '/project/src/ili_utils/logs', 'cache_selected_only': 'False', 'use_experimental_parser': 'False', 'write_json': 'True', 'warn_error': 'None', 'target_path': 'None', 'send_anonymous_usage_stats': 'True', 'debug': 'False', 'no_print': 'None', 'log_format': 'default', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'fail_fast': 'False', 'profiles_dir': '/project/src/ili_utils', 'indirect_selection': 'eager', 'empty': 'None', 'version_check': 'True', 'use_colors': 'True', 'static_parser': 'True', 'partial_parse': 'True', 'invocation_command': 'dbt ', 'introspect': 'True', 'quiet': 'False'}
+[0m09:00:13.645030 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'b7e19bcd-4697-4e50-a72d-6393bbe90f04', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x703b9af39c90>]}
+[0m09:00:13.662841 [debug] [MainThread]: Set downloads directory='/tmp/dbt-downloads-2qkk69j1'
+[0m09:00:13.663316 [debug] [MainThread]: Making package index registry request: GET https://hub.getdbt.com/api/v1/index.json
+[0m09:00:14.220840 [debug] [MainThread]: Response from registry index: GET https://hub.getdbt.com/api/v1/index.json 200
+[0m09:00:14.223593 [debug] [MainThread]: Making package registry request: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json
+[0m09:00:14.423915 [debug] [MainThread]: Response from registry: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json 200
+[0m09:00:14.429495 [info ] [MainThread]: Installing dbt-labs/dbt_utils
+[0m09:00:14.829149 [info ] [MainThread]: Installed from version 1.3.3
+[0m09:00:14.829718 [info ] [MainThread]: Up to date!
+[0m09:00:14.830457 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'package', 'label': 'b7e19bcd-4697-4e50-a72d-6393bbe90f04', 'property_': 'install', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x703b9ad94310>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x703b9bfcd110>]}
+[0m09:00:14.832866 [debug] [MainThread]: Resource report: {"command_name": "deps", "command_success": true, "command_wall_clock_time": 1.3486633, "process_in_blocks": "1096", "process_kernel_time": 0.312176, "process_mem_max_rss": "113324", "process_out_blocks": "2296", "process_user_time": 1.84513}
+[0m09:00:14.833745 [debug] [MainThread]: Command `cli deps` succeeded at 09:00:14.833561 after 1.35 seconds
+[0m09:00:14.834334 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x703b9ae2fc50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x703b9af3a5d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x703b9af39a50>]}
+[0m09:00:14.834924 [debug] [MainThread]: Flushing usage events
+[0m09:00:15.444961 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m09:05:26.109294 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72c46f9d5190>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72c46f9d61d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72c46f9d6190>]}
+
+
+============================== 09:05:26.121630 | a2270054-6f49-43bb-b60d-133d14a7c70f ==============================
+[0m09:05:26.121630 [info ] [MainThread]: Running with dbt=1.11.7
+[0m09:05:26.122705 [debug] [MainThread]: running dbt with arguments {'log_cache_events': 'False', 'introspect': 'True', 'quiet': 'False', 'invocation_command': 'dbt clean', 'log_format': 'default', 'write_json': 'True', 'target_path': 'None', 'send_anonymous_usage_stats': 'True', 'partial_parse': 'True', 'no_print': 'None', 'cache_selected_only': 'False', 'version_check': 'True', 'use_colors': 'True', 'indirect_selection': 'eager', 'printer_width': '80', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'warn_error': 'None', 'debug': 'False', 'static_parser': 'True', 'use_experimental_parser': 'False', 'fail_fast': 'False', 'empty': 'None', 'log_path': '/project/src/ili_utils/logs', 'profiles_dir': '/project/src/ili_utils'}
+[0m09:05:26.326002 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'a2270054-6f49-43bb-b60d-133d14a7c70f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72c46f8cd8d0>]}
+[0m09:05:26.362966 [debug] [MainThread]: Resource report: {"command_name": "clean", "command_success": true, "command_wall_clock_time": 0.34333518, "process_in_blocks": "24", "process_kernel_time": 0.516668, "process_mem_max_rss": "110288", "process_out_blocks": "16", "process_user_time": 3.237392}
+[0m09:05:26.364073 [debug] [MainThread]: Command `dbt clean` succeeded at 09:05:26.363739 after 0.34 seconds
+[0m09:05:26.364858 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72c46f9cad10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72c4743e8a10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72c46fceff10>]}
+[0m09:05:26.365615 [debug] [MainThread]: Flushing usage events
+[0m09:05:26.897014 [debug] [MainThread]: An error was encountered while trying to flush usage events

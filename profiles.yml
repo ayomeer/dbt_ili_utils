@@ -2,7 +2,7 @@ package_dev:
   target: dev
   outputs:
     dev:
-      dbname: test-db
+      dbname: test_db
       host: postgis-container
       pass: postgres
       port: 5432
