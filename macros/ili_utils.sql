@@ -206,7 +206,7 @@
     {% endset %}
     {% set query_return = run_query(insert_query)%}
   
-    {{ synch_sequence_with_ili_target(schema_name) }}
+    {{ ili_utils.synch_sequence_with_ili_target(schema_name) }}
   {% endif %}
 
   
