@@ -206,10 +206,7 @@
     {% endset %}
     {% set query_return = run_query(insert_query)%}
   
-    {% set set_sequence_query %}
-      ALTER SEQUENCE {{schema_name}}
-    {% endset %}
-    {% set query_return = run_query(set_sequence_query)%} 
+    {{ synch_sequence_with_ili_target(schema_name) }}
   {% endif %}
 
   
