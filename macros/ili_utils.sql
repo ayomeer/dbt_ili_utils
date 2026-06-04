@@ -26,7 +26,7 @@
 {%- macro synch_sequence_with_ili_target(schema_name) -%}
   WITH agg as (
     SELECT max(t_id) as max_t_id 
-    FROM {{schema_name}}.ili_mirror_to_flaeche
+    FROM {{ this }}
   )
   SELECT setval('{{schema_name}}.t_ili2db_seq', agg.max_t_id) 
   FROM agg
