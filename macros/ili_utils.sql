@@ -25,10 +25,8 @@
 -- assign them.
 {%- macro synch_sequence_with_ili_target(schema_name) -%}
   WITH agg as (
-    SELECT t_id as max_t_id 
-    FROM dbt_ersatzbiotope.ili_mirror_to_flaeche
-    ORDER BY t_id DESC
-    LIMIT 1
+    SELECT max(t_id) as max_t_id 
+    FROM {{schema_name}}.ili_mirror_to_flaeche
   )
   SELECT setval('{{schema_name}}.t_ili2db_seq', agg.max_t_id) 
   FROM agg
