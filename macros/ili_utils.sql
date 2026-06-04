@@ -35,7 +35,7 @@
 -- Updates ili sequence in target schema based on max t_id in calling model.
 -- Intended to use after inserting records with explicit t_ids, rather than letting target schema
 -- assign them.
-{% macro synch_sequence_with_ili_target(schema_name) -%}
+{%- macro synch_sequence_with_ili_target(schema_name) %}
   WITH agg as (
     SELECT t_id as max_t_id 
     FROM dbt_ersatzbiotope.ili_mirror_to_flaeche

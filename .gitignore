@@ -1,4 +1,3 @@
-
-dbt_packages
-
-package*
+target/*
+dbt_packages/*
+logs/*
