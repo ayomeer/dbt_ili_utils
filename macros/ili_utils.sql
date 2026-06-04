@@ -32,6 +32,18 @@
   {% endif %}
 {%- endmacro %}
 
+-- Updates ili sequence in target schema based on max t_id in calling model.
+-- Intended to use after inserting records with explicit t_ids, rather than letting target schema
+-- assign them.
+{% macro synch_sequence_with_ili_target(schema_name) -%}
+  WITH agg as (
+    SELECT max(t_id) as max_t_id 
+    FROM {{ this }}
+    GROUP BY t_id
+  )
+  SELECT setval('{{schema_name}}.t_ili2db_seq', agg.max_t_id) 
+  FROM agg
+{% endmacro -%}
 
 -- Set up roles, such that there are no access issues for the dbt user 
 -- (target.user). Run this before restoring backups, so the roles can be granted.
@@ -193,7 +205,14 @@
       FROM {{this}}
     {% endset %}
     {% set query_return = run_query(insert_query)%}
+  
+    {% set set_sequence_query %}
+      ALTER SEQUENCE {{schema_name}}
+    {% endset %}
+    {% set query_return = run_query(set_sequence_query)%} 
   {% endif %}
+
+  
 
 {%- endmacro %}
 
