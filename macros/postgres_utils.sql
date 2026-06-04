@@ -5,7 +5,7 @@
   table_name, 
   conflict_target=[],
   update_except_cols=[]
-) %}
+) -%}
 
   {% set insert_cols = dbt_utils.get_filtered_columns_in_relation(this) %}
 

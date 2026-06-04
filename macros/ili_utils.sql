@@ -23,7 +23,7 @@
 -- Updates ili sequence in target schema based on max t_id in calling model.
 -- Intended to use after inserting records with explicit t_ids, rather than letting target schema
 -- assign them.
-{%- macro synch_sequence_with_ili_target(schema_name) %}
+{%- macro synch_sequence_with_ili_target(schema_name) -%}
   WITH agg as (
     SELECT t_id as max_t_id 
     FROM dbt_ersatzbiotope.ili_mirror_to_flaeche
@@ -68,7 +68,7 @@
 --- Baskets and Datasets ------------------------------------------------------
 -- Populate basket table based on project configuration:
 -- Add a row (i.e.) a basket for each basket defined in dbt_project.yml
-{% macro setup_baskets(schema_name) %}
+{% macro setup_baskets(schema_name) -%}
   {% for key, value_dict in var('baskets').items() %}
     {{ log(
         "Writing " ~ key ~ " into " ~ schema_name ~ ".t_ili2db_basket",
@@ -95,7 +95,7 @@
   {% endfor %}
 {%- endmacro %}
 
-{% macro setup_datasets(schema_name) %}
+{% macro setup_datasets(schema_name) -%}
   {% for key, value_dict in var('datasets').items() %}
     {{ log(
         "Writing " ~ key ~ " into " ~ schema_name ~ ".t_ili2db_dataset",
@@ -114,7 +114,7 @@
   {% endfor %}
 {%- endmacro %}
 
-{% macro reset_target_schema(schema_name) %}
+{% macro reset_target_schema(schema_name) -%}
   {{ ili_utils.reset_ili_sequence(schema_name) }}
 
   TRUNCATE TABLE {{schema_name}}.t_ili2db_dataset CASCADE;
@@ -128,7 +128,7 @@
 --- Transferring across boundary: dbt -> INTERLIS schema ----------------------
 
 -- Export dbt table to target table
-{% macro insert_into(schema_name, table_name, truncate_target=false) %}
+{% macro insert_into(schema_name, table_name, truncate_target=false) -%}
   {{ log(
       "Inserting into " ~ schema_name ~ "." ~ table_name ~ 
       " with truncate_target=" ~ truncate_target, 
@@ -150,7 +150,7 @@
   )
   SELECT
     *
-  FROM {{this}}
+  FROM {{this}};
 
   {{ ili_utils.synch_sequence_with_ili_target(schema_name) }}
 
@@ -158,7 +158,7 @@
 
 
 --- Parsing on dbt Triggers ---------------------------------------------------
-{% macro run_start_parsing(target_ili_schema) %}
+{% macro run_start_parsing(target_ili_schema) -%}
   SELECT 1;
 
   {{ log(
