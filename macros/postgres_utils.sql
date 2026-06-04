@@ -1,6 +1,6 @@
 
 -- conflict target as comma seperated list of columns as string
-{% macro upsert_into(
+{%- macro upsert_into(
   schema_name, 
   table_name, 
   conflict_target=[],
@@ -28,5 +28,5 @@
     {{ col }} = COALESCE(EXCLUDED.{{ col }}, target.{{ col }}){% if not loop.last %},{% endif %}
     {% endfor %}
 
-{%- endmacro %}
+{%- endmacro -%}
 

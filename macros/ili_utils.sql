@@ -4,7 +4,7 @@
 -- intended use: first time dbt schema setup
 --  call through run-operations e.g.:
 --  dbt run-operation create_ili_sequence --args '{schema: dbt_quellkataster}'
-{% macro create_ili_sequence(schema_name) -%}
+{%- macro create_ili_sequence(schema_name) -%}
   CREATE SEQUENCE IF NOT EXISTS {{schema_name}}.t_ili2db_seq
   INCREMENT 1
   START 1
@@ -14,7 +14,7 @@
 {%- endmacro %}
 
 -- Reset 't_ili2db_seq' in target schema
-{% macro reset_ili_sequence(schema_name, starting_value=1) -%}
+{%- macro reset_ili_sequence(schema_name, starting_value=1) -%}
   {{ log("Restarting " ~ schema_name ~ ".t_ili2db_seq with " ~ starting_value, info=True) }}
 
   ALTER SEQUENCE {{schema_name}}.t_ili2db_seq RESTART WITH {{starting_value}};
@@ -32,11 +32,11 @@
   )
   SELECT setval('{{schema_name}}.t_ili2db_seq', agg.max_t_id) 
   FROM agg
-{% endmacro -%}
+{%- endmacro -%}
 
 -- Set up roles, such that there are no access issues for the dbt user 
 -- (target.user). Run this before restoring backups, so the roles can be granted.
-{% macro setup_roles_for_schema(schema_name) -%}
+{%- macro setup_roles_for_schema(schema_name) -%}
   {{ log("Creating Read/Write roles for schema " ~ schema_name, info=True) }}
   {{ log("Creating role " ~ schema_name ~ "_read", info=True) }}
   {{ log("Creating role " ~ schema_name ~ "_write", info=True) }}
@@ -47,7 +47,7 @@
   {{ log("Assigning created roles to " ~ target.user, info=True) }}
   GRANT {{ schema_name }}_read to {{ target.user }};
   GRANT {{ schema_name }}_write to {{ target.user }};
-{%- endmacro %}
+{%- endmacro -%}
 
 {% macro grant_select_on_all_tables(schema_name) -%}
   {{ log(
@@ -62,13 +62,13 @@
   )}}
   GRANT USAGE ON SCHEMA {{schema_name}} TO {{target.user}};
   GRANT ALL ON ALL TABLES IN SCHEMA {{schema_name}} TO {{target.user}};
-{%- endmacro %}
+{%- endmacro -%}
 
 
 --- Baskets and Datasets ------------------------------------------------------
 -- Populate basket table based on project configuration:
 -- Add a row (i.e.) a basket for each basket defined in dbt_project.yml
-{% macro setup_baskets(schema_name) -%}
+{%- macro setup_baskets(schema_name) -%}
   {% for key, value_dict in var('baskets').items() %}
     {{ log(
         "Writing " ~ key ~ " into " ~ schema_name ~ ".t_ili2db_basket",
@@ -95,7 +95,7 @@
   {% endfor %}
 {%- endmacro %}
 
-{% macro setup_datasets(schema_name) -%}
+{%- macro setup_datasets(schema_name) -%}
   {% for key, value_dict in var('datasets').items() %}
     {{ log(
         "Writing " ~ key ~ " into " ~ schema_name ~ ".t_ili2db_dataset",
@@ -112,9 +112,9 @@
     -- advance t_ili2db_seq to make up for manually set t_id
     SELECT nextval('{{schema_name}}.t_ili2db_seq'::regclass);
   {% endfor %}
-{%- endmacro %}
+{%- endmacro -%}
 
-{% macro reset_target_schema(schema_name) -%}
+{%- macro reset_target_schema(schema_name) -%}
   {{ ili_utils.reset_ili_sequence(schema_name) }}
 
   TRUNCATE TABLE {{schema_name}}.t_ili2db_dataset CASCADE;
@@ -122,7 +122,7 @@
 
   {{ ili_utils.setup_datasets(schema_name) }}
   {{ ili_utils.setup_baskets(schema_name) }}
-{%- endmacro %}
+{%- endmacro -%}
 
 
 --- Transferring across boundary: dbt -> INTERLIS schema ----------------------
