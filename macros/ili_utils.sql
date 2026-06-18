@@ -66,8 +66,8 @@
 --- Baskets and Datasets ------------------------------------------------------
 -- Populate basket table based on project configuration:
 -- Add a row (i.e.) a basket for each basket defined in dbt_project.yml
-{%- macro setup_baskets(schema_name) -%}
-  {% for key, value_dict in var('baskets').items() %}
+{%- macro setup_baskets(schema_name, baskets_dict) -%}
+  {% for key, value_dict in baskets_dict.items() %}
     {{ log(
         "Writing " ~ key ~ " into " ~ schema_name ~ ".t_ili2db_basket",
         info=True
@@ -93,8 +93,9 @@
   {% endfor %}
 {%- endmacro %}
 
-{%- macro setup_datasets(schema_name) -%}
-  {% for key, value_dict in var('datasets').items() %}
+{%- macro setup_datasets(schema_name, datasets_dict) -%}
+  
+  {% for key, value_dict in datasets_dict.items() %}
     {{ log(
         "Writing " ~ key ~ " into " ~ schema_name ~ ".t_ili2db_dataset",
         info=True
@@ -112,14 +113,14 @@
   {% endfor %}
 {%- endmacro -%}
 
-{%- macro reset_target_schema(schema_name) -%}
+{%- macro reset_target_schema(schema_name, datasets_dict, baskets_dict) -%}
   {{ ili_utils.reset_ili_sequence(schema_name) }}
 
   TRUNCATE TABLE {{schema_name}}.t_ili2db_dataset CASCADE;
   TRUNCATE TABLE {{schema_name}}.t_ili2db_basket CASCADE;
 
-  {{ ili_utils.setup_datasets(schema_name) }}
-  {{ ili_utils.setup_baskets(schema_name) }}
+  {{ ili_utils.setup_datasets(schema_name, datasets_dict) }}
+  {{ ili_utils.setup_baskets(schema_name, baskets_dict) }}
 {%- endmacro -%}
 
 
