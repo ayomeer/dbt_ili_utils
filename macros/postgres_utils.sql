@@ -1,9 +1,8 @@
 
 -- conflict target as comma seperated list of columns as string
 {%- macro upsert_into(
-  source_ref,
-  target_schema, 
-  target_table, 
+  schema_name, 
+  table_name, 
   conflict_target=[],
   update_except_cols=[]
 ) -%}
@@ -15,14 +14,14 @@
     except=update_except_cols
   ) %}
 
-  INSERT INTO {{schema_name}}.{{target_table}} AS target(
+  INSERT INTO {{schema_name}}.{{table_name}} AS target(
     -- Get list of column names present in boundary model
     -- assumption: boundary model column names match target column names 
     {{ insert_cols | join(',\n  ') }}
   ) 
   SELECT
     *
-  FROM {{source_ref}}
+  FROM {{this}}
   ON CONFLICT ({{ conflict_target | join(', ') }}) DO UPDATE
   SET 
     {% for col in update_cols -%}
