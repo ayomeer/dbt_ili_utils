@@ -124,10 +124,12 @@
 {%- endmacro -%}
 
 
+
+
 --- Transferring across boundary: dbt -> INTERLIS schema ----------------------
 
 -- Export dbt table to target table
-{% macro insert_into(schema_name, table_name, truncate_target=false) -%}
+{%- macro insert_into(schema_name, table_name, truncate_target=false) -%}
   {{ log(
       "Inserting into " ~ schema_name ~ "." ~ table_name ~ 
       " with truncate_target=" ~ truncate_target, 
@@ -155,9 +157,9 @@
 
 {%- endmacro %}
 
-
 --- Parsing on dbt Triggers ---------------------------------------------------
-{% macro run_start_parsing(target_ili_schema) -%}
+
+{%- macro run_start_parsing(target_ili_schema) -%}
   SELECT 1;
 
   {{ log(
