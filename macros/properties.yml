@@ -1,6 +1,6 @@
 macros:
   - name: create_ili_sequence
-    description: Create sequence schema_name.t_ili2db_seq.
+    description: Create sequence schema_name.t_ili2db_seq. Intended for use with run-operation. 
     arguments:
     - name: schema_name
       type: string
@@ -14,11 +14,11 @@ macros:
       description: Name of the schema to reset the sequence in.
 
   - name: setup_roles_for_schema
-    description: Set up read and write roles for the schema.
+    description: Set up read and write roles for the schema. Intended for use with run-operation.
     arguments: []
 
   - name: grant_select_on_all_tables
-    description: DEPRECATED!
+    description: DEPRECATED! Use dbt_project.yml config +grants instead.
     arguments: []
 
   - name: setup_baskets
@@ -31,15 +31,25 @@ macros:
 
   - name: reset_target_schema
     description: Reset target INTERLIS schema to state before first data write. Truncates data tables and sets up datasets and baskets again.
-    arguments: []
+    arguments: 
+    - name: target_ili_schema
+      type: string
+
 
   - name: insert_into
     description: Insert data fram dbt mirror model into INTERLIS target table. Use the 'truncate_target' argument, to control whether or not to truncate the target table first.
-    arguments: []
+    arguments: 
+    - name: schema_name
+      type: string
+    - name: table_name
+      type: string
+    - name: truncate_target
+      type: boolean
+      description: Wheter or not to truncate the target table before inserting.
 
   - name: run_start_parsing
-    description: DEPRECATED!
-    arguments: []
+    description: DEPRECATED! 
+
 
 
 
