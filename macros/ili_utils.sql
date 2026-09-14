@@ -1,5 +1,17 @@
 --- General Utility -----------------------------------------------------------
 
+-- Create dbt schema
+-- Intended for use via dbt run-operation
+{%- macro create_dbt_schema(schema_name, owner_role, read_role) -%}
+  CREATE SCHEMA {{schema_name}};
+
+  ALTER SCHEMA {{schema_name}}
+  OWNER TO {{owner_role}};
+
+  GRANT USAGE ON SCHEMA {{schema_name}} TO {{read_role}};
+{%- endmacro %}
+
+
 -- Create t_ili2db_sequence
 -- intended use: first time dbt schema setup
 --  call through run-operations e.g.:
