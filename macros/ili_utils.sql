@@ -3,12 +3,18 @@
 -- Create dbt schema
 -- Intended for use via dbt run-operation
 {%- macro create_dbt_schema(schema_name, owner_role, read_role) -%}
-  CREATE SCHEMA {{schema_name}};
+  {{ log("Creating schema '" ~ schema_name ~ "' on target " ~ target.name , info=True) }}
+  
+  {% set sql %}
+    CREATE SCHEMA {{schema_name}};
 
-  ALTER SCHEMA {{schema_name}}
-  OWNER TO {{owner_role}};
+    ALTER SCHEMA {{schema_name}}
+    OWNER TO {{owner_role}};
 
-  GRANT USAGE ON SCHEMA {{schema_name}} TO {{read_role}};
+    GRANT USAGE ON SCHEMA {{schema_name}} TO {{read_role}};
+  {% endset %}
+
+  {% do run_query(sql) %}
 {%- endmacro %}
 
 
@@ -17,12 +23,16 @@
 --  call through run-operations e.g.:
 --  dbt run-operation create_ili_sequence --args '{schema: dbt_quellkataster}'
 {%- macro create_ili_sequence(schema_name) -%}
-  CREATE SEQUENCE IF NOT EXISTS {{schema_name}}.t_ili2db_seq
-  INCREMENT 1
-  START 1
-  MINVALUE 1
-  MAXVALUE 9223372036854775807
-  CACHE 1;
+  {% set sql %}
+    CREATE SEQUENCE IF NOT EXISTS {{schema_name}}.t_ili2db_seq
+    INCREMENT 1
+    START 1
+    MINVALUE 1
+    MAXVALUE 9223372036854775807
+    CACHE 1;
+  {% endset %}
+
+  {% do run_query(sql) %}
 {%- endmacro %}
 
 -- Reset 't_ili2db_seq' in target schema
