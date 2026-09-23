@@ -4,6 +4,7 @@
   schema_name, 
   table_name, 
   conflict_target=[],
+  conflict_except_values={},
   update_except_cols=[]
 ) -%}
 
@@ -22,8 +23,15 @@
   SELECT
     *
   FROM {{this}}
-  ON CONFLICT ({{ conflict_target | join(', ') }}) DO UPDATE
-  SET 
+  ON CONFLICT ({{ conflict_target | join(', ') }}) 
+  {% if conflict_except_values %}
+    WHERE
+    {% for col, value in conflict_except_values.items() %}
+      {{ col }} <> {{ dbt.string_literal(value) }}
+      {% if not loop.last %}AND{% endif %}
+    {% endfor %}
+  {% endif %}
+  DO UPDATE SET 
     {% for col in update_cols -%}
     {{ col }} = COALESCE(EXCLUDED.{{ col }}, target.{{ col }}){% if not loop.last %},{% endif %}
     {% endfor %}
