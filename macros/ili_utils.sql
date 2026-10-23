@@ -12,6 +12,13 @@
     OWNER TO {{owner_role}};
 
     GRANT USAGE ON SCHEMA {{schema_name}} TO {{read_role}};
+
+    CREATE SEQUENCE IF NOT EXISTS {{schema_name}}.t_ili2db_seq
+      INCREMENT 1
+      START 1
+      MINVALUE 1
+      MAXVALUE 9223372036854775807
+      CACHE 1;
   {% endset %}
 
   {% do run_query(sql) %}
