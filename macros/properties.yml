@@ -1,4 +1,17 @@
 macros:
+  - name: create_dbt_schema
+    description: Create a new schema for dbt to use for materializing its models in on the currently selected target in profiles.yml 
+    arguments:
+    - name: schema_name
+      type: string
+      description: Name of the schema to create. Naming convention: prefix with 'dbt_'.
+    - name: owner_role
+      type: string
+      description: Role to give owner to. Must match owner of dbt project's source tables!
+    - name: read_role
+      type: string
+      description: Role to give read priviledges to. Usually source schema read role.
+    
   - name: create_ili_sequence
     description: Create sequence schema_name.t_ili2db_seq. Intended for use with run-operation. 
     arguments:
